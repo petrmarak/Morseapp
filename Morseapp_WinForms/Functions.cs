@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using System.Speech.Synthesis;
+//using System.Speech.Synthesis;
 
 namespace Morseapp_WinForms
 {

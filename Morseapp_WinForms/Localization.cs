@@ -95,11 +95,11 @@ namespace Morseapp_WinForms
         /// <summary>
         /// Localizes texts used in the application depending on the selected language.
         /// </summary>
-        /// <param name="index">Index of language to set. Corresponds to indices in Config_App_comboBox_Lang</param>
+        /// <param name="langID">Index of language to set. Corresponds to indices in Config_App_comboBox_Lang</param>
         /// <returns>Returns index of currently set language.</returns>
-        private Language SetLanguage(int index)
+        private Language SetLanguage(int langID)
         {
-            if (index == (int)Language.Czech)
+            if (langID == (int)Language.Czech)
             {
                 SYSMENU_Restart = "&Restartovat";
                 SYSMENU_EnableVisualStyles = "&Povolit Vizuální styly";

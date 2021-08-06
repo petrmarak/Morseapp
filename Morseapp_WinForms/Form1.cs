@@ -174,9 +174,9 @@ namespace Morseapp_WinForms
                 {
                     tempValue += configContent[index];
                 }
-                Config_App_comboBox_Lang.SelectedIndex = (int)SetLanguage(Convert.ToInt32(tempValue));
-
             }
+            int.TryParse(tempValue, out int langID);
+            Config_App_comboBox_Lang.SelectedIndex = (int)SetLanguage(langID);
             this.toolStripStatusLabel.Text = STATUS_Default;
             tempValue = string.Empty;
 
