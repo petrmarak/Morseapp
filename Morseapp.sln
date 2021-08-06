@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morseapp_Console", "Morseapp_Console\Morseapp_Console.csproj", "{87340A83-AD28-4F4A-B649-5254339A3CBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morseapp_WinForms", "Morseapp_WinForms\Morseapp_WinForms.csproj", "{42C2777F-C7B7-4128-BC93-8B31FF1DB7AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D2276C10-C7EB-49B2-A0A6-0E99E842B5DA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87340A83-AD28-4F4A-B649-5254339A3CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87340A83-AD28-4F4A-B649-5254339A3CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87340A83-AD28-4F4A-B649-5254339A3CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87340A83-AD28-4F4A-B649-5254339A3CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C2777F-C7B7-4128-BC93-8B31FF1DB7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C2777F-C7B7-4128-BC93-8B31FF1DB7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C2777F-C7B7-4128-BC93-8B31FF1DB7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C2777F-C7B7-4128-BC93-8B31FF1DB7AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6B9416F-D917-401C-8A19-B0E477F1A696}
+	EndGlobalSection
+EndGlobal
