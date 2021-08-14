@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Morseapp_WinForms
 {
-    public partial class Form1 : Form
+    public partial class Form_Main : Form
     {
         // *** System menu modifications: *** \\
         // Learned from: https://stackoverflow.com/questions/4615940/how-can-i-customize-the-system-menu-of-a-windows-form
@@ -69,7 +69,7 @@ namespace Morseapp_WinForms
             AppendMenu(hSysMenu, MF_STRING, SYSMENU_APPRESTART_ID, SYSMENU_Restart);
 
             // Add a separator
-            AppendMenu(hSysMenu, MF_SEPARATOR, SYSMENU_FIRSTSEPARATOR_ID, string.Empty);
+            AppendMenu(hSysMenu, MF_SEPARATOR, SYSMENU_FIRSTSEPARATOR_ID, "");
 
             // Add the "Switch Visual Styles" menu item
             AppendMenu(hSysMenu, MF_CHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, SYSMENU_EnableVisualStyles);
@@ -128,8 +128,8 @@ namespace Morseapp_WinForms
             }
         }
 
-        // *** Form1 init: *** \\
-        public Form1()
+        // *** Form_Main init: *** \\
+        public Form_Main()
         {
             this.DoubleBuffered = true;
             this.MaximizeBox = false;
@@ -146,13 +146,14 @@ namespace Morseapp_WinForms
             this.Decoder_textBox_Output.BackColor = Color.WhiteSmoke;
             this.Config_App_comboBox_Lang.SelectedIndex = (int)Language.English;
             this.Config_App_checkBox_Dynamic.Checked = true;
+            this.Config_App_comboBox_Jokes.SelectedIndex = 0;
             this.Config_Player_trackBar_Speed.Value = player_TimeUnit;
             this.Config_Player_label_CurrentSpeed.Text = Convert.ToString(player_TimeUnit) + " ms";
             this.Config_Player_checkBox_StrictTiming.Checked = false;
             this.Config_Player_trackBar_Freq.Value = player_Frequency;
             this.Config_Player_label_CurrentFreq.Text = Convert.ToString(player_Frequency) + " Hz";
 
-            // multiple methods for one event are being removed when specified in Form1.Designer.cs
+            // multiple methods for one event are being removed when specified in Form_Main.Designer.cs
             this.Coder_textBox_Input.TextChanged += new EventHandler(Common_textBox_TextChanged);
             this.Coder_textBox_Output.TextChanged += new EventHandler(Common_textBox_TextChanged);
             this.Decoder_textBox_Input.TextChanged += new EventHandler(Common_textBox_TextChanged);
@@ -163,7 +164,7 @@ namespace Morseapp_WinForms
             // Load user-configurable settings from config.ini: \\
             string configContent = File.ReadAllText(configFile);
             int index;
-            string tempValue = string.Empty;
+            string tempValue = "";
 
             // Language
             index = configContent.LastIndexOf("language=");
@@ -175,16 +176,18 @@ namespace Morseapp_WinForms
                     tempValue += configContent[index];
                 }
             }
+#pragma warning disable CA1806 // Do not ignore method results
             int.TryParse(tempValue, out int langID);
+#pragma warning restore CA1806 // Do not ignore method results
             Config_App_comboBox_Lang.SelectedIndex = (int)SetLanguage(langID);
             this.toolStripStatusLabel.Text = STATUS_Default;
-            tempValue = string.Empty;
+            tempValue = "";
 
             // Checkboxes
             if (configContent.Contains("dynamicConversion=") && configContent.Contains("strictTiming=") && configContent.Contains("allowExplicitJokes="))
             {
                 Config_App_checkBox_Dynamic.Checked = configContent.Contains("dynamicConversion=True");
-                Config_App_checkBox_AllowExplicit.Checked = configContent.Contains("allowExplicitJokes=True");
+                Config_App_checkBox_JokeOption.Checked = configContent.Contains("allowExplicitJokes=True");
                 Config_Player_checkBox_StrictTiming.Checked = configContent.Contains("strictTiming=True");
             }
 
@@ -200,7 +203,7 @@ namespace Morseapp_WinForms
                 }
                 Config_Player_trackBar_Speed.Value = Convert.ToInt32(tempValue);
             }
-            tempValue = string.Empty;
+            tempValue = "";
 
             // Frequency
             index = configContent.LastIndexOf("frequency=");
@@ -214,7 +217,7 @@ namespace Morseapp_WinForms
                 }
                 Config_Player_trackBar_Freq.Value = Convert.ToInt32(tempValue);
             }
-            tempValue = string.Empty;
+            tempValue = "";
         }
 
 
@@ -230,7 +233,7 @@ namespace Morseapp_WinForms
             MessageBox.Show(MESSAGEBOX_About_Text, MESSAGEBOX_About_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             stopPlaying = true;
         }
@@ -391,12 +394,13 @@ namespace Morseapp_WinForms
 
         private void Coder_button_Joke_Click(object sender, EventArgs e)
         {
+            Coder_textBox_Input.ResetText();
             toolStripStatusLabel.Text = STATUS_Coder_Joke_Invoked;
             Cursor.Current = Cursors.WaitCursor;
-            bool explicitContent = Config_App_checkBox_AllowExplicit.Checked;
-            string joke = string.Empty;
-            Coder_textBox_Input.ResetText();
-            Coder_textBox_Input.Text = Task.Run(() => GetJoke(explicitContent)).Result;
+
+            int jokesSource = Config_App_comboBox_Jokes.SelectedIndex;
+            bool option = Config_App_checkBox_JokeOption.Checked;
+            Coder_textBox_Input.Text = Task.Run(() => GetJoke(jokesSource, option)).Result;
 
             Cursor.Current = Cursors.Default;
             toolStripStatusLabel.Text = STATUS_Default;
@@ -474,6 +478,7 @@ namespace Morseapp_WinForms
         private void Coder_button_Settings_Click(object sender, EventArgs e)
         {
             tabControl_Main.SelectedTab = Configuration;
+            Config_App_checkBox_Dynamic.Focus();
         }
 
 
@@ -555,6 +560,7 @@ namespace Morseapp_WinForms
         private void Decoder_button_Settings_Click(object sender, EventArgs e)
         {
             tabControl_Main.SelectedTab = Configuration;
+            Config_App_checkBox_Dynamic.Focus();
         }
 
 
@@ -586,6 +592,7 @@ namespace Morseapp_WinForms
         private void Player_button_Settings_Click(object sender, EventArgs e)
         {
             tabControl_Main.SelectedTab = Configuration;
+            Config_Player_trackBar_Speed.Focus();
         }
 
 
@@ -685,6 +692,13 @@ namespace Morseapp_WinForms
             toolStripStatusLabel.Text = STATUS_Config_Player_StrictTiming;
         }
 
+        private void Config_App_button_Updates_Click(object sender, EventArgs e)
+        {
+            this.UseWaitCursor = true;
+            CheckForUpdates();
+            this.UseWaitCursor = false;
+        }
+
         private void Config_App_button_About_Click(object sender, EventArgs e)
         {
             ShowAboutWindow();
@@ -703,6 +717,34 @@ namespace Morseapp_WinForms
         private void ShowDict_button_Refresh_MouseHover(object sender, EventArgs e)
         {
             toolStripStatusLabel.Text = STATUS_Dictionary_Refresh;
+        }
+
+        private void Config_App_comboBox_Jokes_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (Config_App_comboBox_Jokes.SelectedIndex == 2)
+                Config_App_checkBox_JokeOption.Text = "Only programming jokes";
+            else
+                Config_App_checkBox_JokeOption.Text = "Allow explicit jokes";
+        }
+
+        private void Coder_button_while_Click(object sender, EventArgs e)
+        {
+            stopPlaying = false;
+            while(!Coder_textBox_Output.Text.Contains("Error") && !stopPlaying)
+            {
+                toolStripStatusLabel.Text = "Testing GetJoke() for returning incorrectly-formatted jokes...";
+                int jokesSource = Config_App_comboBox_Jokes.SelectedIndex;
+                bool option = Config_App_checkBox_JokeOption.Checked;
+                Coder_textBox_Input.Text = Task.Run(() => GetJoke(jokesSource, option)).Result;
+                Application.DoEvents();
+            }
+            /*
+            * My wife and I have reached the difficult decision that we do not want children.If anybody does, please just send me your contact details and we can drop them off tomorrow.
+            * What do Santa's little helpers learn at school?The elf-abet!
+            * Eight bytes walk into a bar.The bartender asks, "Can I get you anything?""Yeah," reply the bytes."Make us a double."
+            * "Honey, go to the store and buy some eggs.""OK.""Oh and while you're there, get some milk."He never returned.
+            * 
+            */
         }
     }
 }

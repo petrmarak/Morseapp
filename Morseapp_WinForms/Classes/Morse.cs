@@ -103,7 +103,7 @@ namespace Morseapp_WinForms
         public static string Decoder(string input)
         {
             StringBuilder decoded = new();
-            string codeWord = string.Empty;
+            string codeWord = "";
             int codeWordIndex;
             input = input.Replace("   ", " / ");
 
@@ -122,7 +122,7 @@ namespace Morseapp_WinForms
                 List<char> keys = morseList.Keys.ToList();
                 decoded.Append(Convert.ToChar(keys[codeWordIndex]));
 
-                codeWord = string.Empty;
+                codeWord = "";
             }
 
             return decoded.ToString().ToUpper();
@@ -247,7 +247,7 @@ namespace Morseapp_WinForms
         /// </summary>
         public static string PrintSortedList()
         {
-            string table = string.Empty;
+            string table = "";
             table += $"ASCII\tMorse\t\tASCII\tMorse\t\tASCII\tMorse\t\tASCII\tMorse{Environment.NewLine}";
             ushort counter = 0;
 

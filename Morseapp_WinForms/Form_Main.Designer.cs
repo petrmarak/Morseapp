@@ -1,7 +1,7 @@
 ﻿
 namespace Morseapp_WinForms
 {
-    partial class Form1
+    partial class Form_Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,9 +30,10 @@ namespace Morseapp_WinForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.Coder = new System.Windows.Forms.TabPage();
+            this.Coder_button_while = new System.Windows.Forms.Button();
             this.Coder_button_Copy = new System.Windows.Forms.Button();
             this.Coder_button_StopSound = new System.Windows.Forms.Button();
             this.Coder_button_Joke = new System.Windows.Forms.Button();
@@ -66,11 +67,14 @@ namespace Morseapp_WinForms
             this.ShowDict_richtextBox_Output = new System.Windows.Forms.RichTextBox();
             this.Configuration = new System.Windows.Forms.TabPage();
             this.Config_groupBox_App = new System.Windows.Forms.GroupBox();
+            this.Config_App_button_Updates = new System.Windows.Forms.Button();
+            this.Config_App_label_Jokes = new System.Windows.Forms.Label();
+            this.Config_App_comboBox_Jokes = new System.Windows.Forms.ComboBox();
             this.Config_App_linkLabel_GitHubPage = new System.Windows.Forms.LinkLabel();
             this.Config_App_label_GitHub = new System.Windows.Forms.Label();
             this.Config_App_button_About = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Config_App_checkBox_AllowExplicit = new System.Windows.Forms.CheckBox();
+            this.Config_App_checkBox_JokeOption = new System.Windows.Forms.CheckBox();
             this.Config_App_label_LangChanged = new System.Windows.Forms.Label();
             this.Config_App_linkLabel_LangChanged = new System.Windows.Forms.LinkLabel();
             this.Config_App_checkBox_Dynamic = new System.Windows.Forms.CheckBox();
@@ -90,6 +94,7 @@ namespace Morseapp_WinForms
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog_Updater = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl_Main.SuspendLayout();
             this.Coder.SuspendLayout();
             this.Decoder.SuspendLayout();
@@ -121,6 +126,7 @@ namespace Morseapp_WinForms
             // Coder
             // 
             this.Coder.AllowDrop = true;
+            this.Coder.Controls.Add(this.Coder_button_while);
             this.Coder.Controls.Add(this.Coder_button_Copy);
             this.Coder.Controls.Add(this.Coder_button_StopSound);
             this.Coder.Controls.Add(this.Coder_button_Joke);
@@ -135,6 +141,13 @@ namespace Morseapp_WinForms
             resources.ApplyResources(this.Coder, "Coder");
             this.Coder.Name = "Coder";
             this.Coder.UseVisualStyleBackColor = true;
+            // 
+            // Coder_button_while
+            // 
+            resources.ApplyResources(this.Coder_button_while, "Coder_button_while");
+            this.Coder_button_while.Name = "Coder_button_while";
+            this.Coder_button_while.UseVisualStyleBackColor = true;
+            this.Coder_button_while.Click += new System.EventHandler(this.Coder_button_while_Click);
             // 
             // Coder_button_Copy
             // 
@@ -426,11 +439,14 @@ namespace Morseapp_WinForms
             // 
             // Config_groupBox_App
             // 
+            this.Config_groupBox_App.Controls.Add(this.Config_App_button_Updates);
+            this.Config_groupBox_App.Controls.Add(this.Config_App_label_Jokes);
+            this.Config_groupBox_App.Controls.Add(this.Config_App_comboBox_Jokes);
             this.Config_groupBox_App.Controls.Add(this.Config_App_linkLabel_GitHubPage);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_GitHub);
             this.Config_groupBox_App.Controls.Add(this.Config_App_button_About);
             this.Config_groupBox_App.Controls.Add(this.pictureBox1);
-            this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_AllowExplicit);
+            this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_JokeOption);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_linkLabel_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_Dynamic);
@@ -439,6 +455,30 @@ namespace Morseapp_WinForms
             resources.ApplyResources(this.Config_groupBox_App, "Config_groupBox_App");
             this.Config_groupBox_App.Name = "Config_groupBox_App";
             this.Config_groupBox_App.TabStop = false;
+            // 
+            // Config_App_button_Updates
+            // 
+            resources.ApplyResources(this.Config_App_button_Updates, "Config_App_button_Updates");
+            this.Config_App_button_Updates.Name = "Config_App_button_Updates";
+            this.Config_App_button_Updates.UseVisualStyleBackColor = true;
+            this.Config_App_button_Updates.Click += new System.EventHandler(this.Config_App_button_Updates_Click);
+            // 
+            // Config_App_label_Jokes
+            // 
+            resources.ApplyResources(this.Config_App_label_Jokes, "Config_App_label_Jokes");
+            this.Config_App_label_Jokes.Name = "Config_App_label_Jokes";
+            // 
+            // Config_App_comboBox_Jokes
+            // 
+            this.Config_App_comboBox_Jokes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Config_App_comboBox_Jokes.FormattingEnabled = true;
+            this.Config_App_comboBox_Jokes.Items.AddRange(new object[] {
+            resources.GetString("Config_App_comboBox_Jokes.Items"),
+            resources.GetString("Config_App_comboBox_Jokes.Items1"),
+            resources.GetString("Config_App_comboBox_Jokes.Items2")});
+            resources.ApplyResources(this.Config_App_comboBox_Jokes, "Config_App_comboBox_Jokes");
+            this.Config_App_comboBox_Jokes.Name = "Config_App_comboBox_Jokes";
+            this.Config_App_comboBox_Jokes.SelectedValueChanged += new System.EventHandler(this.Config_App_comboBox_Jokes_SelectedValueChanged);
             // 
             // Config_App_linkLabel_GitHubPage
             // 
@@ -472,13 +512,13 @@ namespace Morseapp_WinForms
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // Config_App_checkBox_AllowExplicit
+            // Config_App_checkBox_JokeOption
             // 
-            resources.ApplyResources(this.Config_App_checkBox_AllowExplicit, "Config_App_checkBox_AllowExplicit");
-            this.Config_App_checkBox_AllowExplicit.Name = "Config_App_checkBox_AllowExplicit";
-            this.Config_App_checkBox_AllowExplicit.UseVisualStyleBackColor = true;
-            this.Config_App_checkBox_AllowExplicit.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
-            this.Config_App_checkBox_AllowExplicit.MouseHover += new System.EventHandler(this.Config_App_checkBox_AllowExplicit_MouseHover);
+            resources.ApplyResources(this.Config_App_checkBox_JokeOption, "Config_App_checkBox_JokeOption");
+            this.Config_App_checkBox_JokeOption.Name = "Config_App_checkBox_JokeOption";
+            this.Config_App_checkBox_JokeOption.UseVisualStyleBackColor = true;
+            this.Config_App_checkBox_JokeOption.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
+            this.Config_App_checkBox_JokeOption.MouseHover += new System.EventHandler(this.Config_App_checkBox_AllowExplicit_MouseHover);
             // 
             // Config_App_label_LangChanged
             // 
@@ -520,7 +560,6 @@ namespace Morseapp_WinForms
             resources.ApplyResources(this.Config_App_comboBox_Lang, "Config_App_comboBox_Lang");
             this.Config_App_comboBox_Lang.Name = "Config_App_comboBox_Lang";
             this.Config_App_comboBox_Lang.SelectionChangeCommitted += new System.EventHandler(this.Config_App_comboBox_Lang_SelectionChangeCommitted);
-            this.Config_App_comboBox_Lang.Leave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_App_comboBox_Lang.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_App_comboBox_Lang.MouseHover += new System.EventHandler(this.Config_App_comboBox_Lang_MouseHover);
             // 
@@ -624,22 +663,26 @@ namespace Morseapp_WinForms
             // 
             // toolTip
             // 
+            this.toolTip.AutomaticDelay = 250;
+            this.toolTip.AutoPopDelay = 5000;
+            this.toolTip.InitialDelay = 250;
             this.toolTip.IsBalloon = true;
+            this.toolTip.ReshowDelay = 50;
             // 
             // backgroundWorker
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.WorkerSupportsCancellation = true;
             // 
-            // Form1
+            // Form_Main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tabControl_Main);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Name = "Form_Main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
             this.tabControl_Main.ResumeLayout(false);
             this.Coder.ResumeLayout(false);
             this.Coder.PerformLayout();
@@ -711,7 +754,7 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.Label Config_App_label_LangChanged;
         private System.Windows.Forms.Button Coder_button_Settings;
         private System.Windows.Forms.Button Coder_button_Joke;
-        private System.Windows.Forms.CheckBox Config_App_checkBox_AllowExplicit;
+        private System.Windows.Forms.CheckBox Config_App_checkBox_JokeOption;
         private System.Windows.Forms.Button Coder_button_StopSound;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -725,6 +768,11 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.Button Coder_button_Copy;
         private System.Windows.Forms.Button Decoder_button_Copy;
         private System.Windows.Forms.Button ShowDict_button_Copy;
+        private System.Windows.Forms.ComboBox Config_App_comboBox_Jokes;
+        private System.Windows.Forms.Label Config_App_label_Jokes;
+        private System.Windows.Forms.Button Config_App_button_Updates;
+        private System.Windows.Forms.Button Coder_button_while;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_Updater;
     }
 }
 

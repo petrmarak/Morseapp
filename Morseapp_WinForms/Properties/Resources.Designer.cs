@@ -189,5 +189,14 @@ namespace Morseapp_WinForms.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Windows_Balloon {
+            get {
+                return ResourceManager.GetStream("Windows_Balloon", resourceCulture);
+            }
+        }
     }
 }

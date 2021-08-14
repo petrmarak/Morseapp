@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Morseapp_WinForms
 {
-    public partial class Form1
+    public partial class Form_Main
     {
         enum Language
         {
@@ -213,7 +213,7 @@ namespace Morseapp_WinForms
                 Config_App_label_LangChanged.Text = NAME_Config_App_LangChanged_Note;
                 Config_App_linkLabel_LangChanged.Text = NAME_Config_App_LangChanged_NoteRestart;
                 Config_App_checkBox_Dynamic.Text = NAME_Config_App_Dynamic;
-                Config_App_checkBox_AllowExplicit.Text = NAME_Config_App_Explicit;
+                Config_App_checkBox_JokeOption.Text = NAME_Config_App_Explicit;
                 Config_App_label_GitHub.Text = NAME_Config_App_GitHub;
                 Config_App_button_About.Text = NAME_Config_App_About;
                 Config_groupBox_Player.Text = NAME_Config_Player;
