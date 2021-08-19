@@ -9,18 +9,21 @@ namespace Morseapp_WinForms
         public Form_Updates()
         {
             InitializeComponent();
-            this.Text = $"{Application.ProductName}, v{Application.ProductVersion} Update Tool";
+            this.Text = $"{Application.ProductName} Update Tool, v{Application.ProductVersion}";
         }
 
         private void Form_Updates_Load(object sender, EventArgs e)
         {
-            label_Title.Text = $"Newer version is available: {upToDateVersion}";
+            label_Title.Text = $"A new update is available: version {upToDateVersion}";
             label_Changelog.Text = changeLog;
-            using SoundPlayer soundPlayer = new(Properties.Resources.Windows_Balloon);
-            soundPlayer.Play();
+
+            using (SoundPlayer soundPlayer = new(Properties.Resources.Windows_Balloon))
+            {
+                soundPlayer.Play();
+            }
         }
 
-        public enum Button : ushort
+        public enum UpdateButton : ushort
         {
             Cancel, 
             Dependent, 
@@ -33,19 +36,19 @@ namespace Morseapp_WinForms
 
         private void button_Dependent_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)Button.Dependent;
+            buttonClicked = (ushort)UpdateButton.Dependent;
             this.Close();
         }
 
         private void button_Standalone_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)Button.Standalone;
+            buttonClicked = (ushort)UpdateButton.Standalone;
             this.Close();
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)Button.Cancel;
+            buttonClicked = (ushort)UpdateButton.Cancel;
             this.Close();
         }
 

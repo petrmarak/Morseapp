@@ -61,16 +61,6 @@ namespace Morseapp_WinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon aclui_116 {
-            get {
-                object obj = ResourceManager.GetObject("aclui_116", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap app_settings_40 {
@@ -81,12 +71,12 @@ namespace Morseapp_WinForms.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon imageres_1026 {
+        internal static System.Drawing.Bitmap GitHub_Mark_24px {
             get {
-                object obj = ResourceManager.GetObject("imageres_1026", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("GitHub_Mark_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -133,9 +123,9 @@ namespace Morseapp_WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon morse_code1 {
+        internal static System.Drawing.Icon morse_code_icon {
             get {
-                object obj = ResourceManager.GetObject("morse_code1", resourceCulture);
+                object obj = ResourceManager.GetObject("morse_code_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -167,26 +157,6 @@ namespace Morseapp_WinForms.Properties {
             get {
                 object obj = ResourceManager.GetObject("settings_40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon shell32_13 {
-            get {
-                object obj = ResourceManager.GetObject("shell32_13", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon shell32_16826 {
-            get {
-                object obj = ResourceManager.GetObject("shell32_16826", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         

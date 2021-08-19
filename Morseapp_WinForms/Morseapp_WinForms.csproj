@@ -15,7 +15,7 @@
     <PackageIcon>morseapp.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/petrmarak/Morseapp</RepositoryUrl>
-    <Version>0.0.1</Version>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -40,9 +40,6 @@
   <ItemGroup>
     <None Update="config.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Morseapp.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\morseapp.png">
       <Pack>True</Pack>

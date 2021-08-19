@@ -131,10 +131,6 @@ namespace Morseapp_WinForms
         // *** Form_Main init: *** \\
         public Form_Main()
         {
-            this.DoubleBuffered = true;
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             InitializeComponent();
 
             // Init control settings
@@ -230,7 +226,9 @@ namespace Morseapp_WinForms
 
         private void ShowAboutWindow()
         {
-            MessageBox.Show(MESSAGEBOX_About_Text, MESSAGEBOX_About_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show(MESSAGEBOX_About_Text, MESSAGEBOX_About_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form_About fa = new();
+            fa.ShowDialog();
         }
 
         private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)

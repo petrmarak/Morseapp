@@ -91,12 +91,17 @@ namespace Morseapp_WinForms
             }
 
             webClient.Dispose();
-            joke = joke.Replace('[', '(').Replace(']', ')').Replace('’', '\'');
+            joke = joke.Replace('[', '(').Replace(']', ')').Replace('’', '\'').Replace("\r", string.Empty).Replace("\n", string.Empty);
             return joke;
         }
 
         /// <summary>
-        /// Application Updater
+        /// Property to store where user chose to download the new application version
+        /// </summary>
+        public string UpdateSavePath { get; set; }
+
+        /// <summary>
+        /// Application Updater mechanism
         /// </summary>
         public void CheckForUpdates()
         {
@@ -150,13 +155,30 @@ namespace Morseapp_WinForms
             }
 
             ushort dlChoice;
+            DialogResult dlAnywayChoice;
+            bool forceUpdate = default;
             Form_Updates.upToDateVersion = upToDateVersion;
             Form_Updates.changeLog = changeLog;
-            if (Application.ProductVersion == upToDateVersion)
+
+            int runVerNum = Convert.ToInt32(Application.ProductVersion.Replace(".", string.Empty));
+            int newVerNum = Convert.ToInt32(upToDateVersion.Replace(".", string.Empty));
+
+            if (runVerNum == newVerNum)
             {
-                MessageBox.Show($"Application is up-to-date.", $"{Application.ProductName}, version {Application.ProductVersion} Update Tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Application is up-to-date.", $"{Application.ProductName} Update Tool, v{Application.ProductVersion}", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+
+            else if (runVerNum > newVerNum)
+            {
+                dlAnywayChoice = MessageBox.Show($"This is an unreleased in-development version. Official release is {upToDateVersion}.{Environment.NewLine}Would you like to download the released one anyway?", $"{Application.ProductName} Update Tool, v{Application.ProductVersion}", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dlAnywayChoice == DialogResult.Yes)
+                    forceUpdate = true;
+                else
+                    return;
+
+            }
+
+            if (runVerNum < newVerNum || forceUpdate)
             {
                 Form_Updates fu = new();
                 fu.ShowDialog();
@@ -171,42 +193,40 @@ namespace Morseapp_WinForms
                 folderBrowserDialog_Updater.Description = "Choose where do you want to save the new version";
                 folderBrowserDialog_Updater.UseDescriptionForTitle = true;
 
-                if (dlChoice == (ushort)Form_Updates.Button.Dependent)
+                if (dlChoice == (ushort)Form_Updates.UpdateButton.Dependent)
                 {
                     DialogResult result = folderBrowserDialog_Updater.ShowDialog();
                     if (result == DialogResult.Cancel)
                         return;
 
-                    string savePath = $"{folderBrowserDialog_Updater.SelectedPath}\\{jo.SelectToken($"assets[{dependentIndex}].name")}";
+                    UpdateSavePath = $"{folderBrowserDialog_Updater.SelectedPath}\\{jo.SelectToken($"assets[{dependentIndex}].name")}";
                     try
                     {
-                        webClient.DownloadFileAsync(new Uri(dependentURL), savePath);
+                        webClient.DownloadFileAsync(new Uri(dependentURL), UpdateSavePath);
                     }
                     catch (WebException ex)
                     {
-                        MessageBox.Show($"An error occured during downloading: {ex.Message}{Environment.NewLine}Please try again later.", "Error - Update Tool", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"An error occured during downloading update: {ex.Message}{Environment.NewLine}Please try again later. If this problem persists, download the application directly from GitHub through button in the About dialog.", "(Error) Update Tool", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    System.Diagnostics.Process.Start("explorer.exe", $"/select,{savePath}");
                 }
 
-                else if (dlChoice == (ushort)Form_Updates.Button.Standalone)
+                else if (dlChoice == (ushort)Form_Updates.UpdateButton.Standalone)
                 {
                     DialogResult result = folderBrowserDialog_Updater.ShowDialog();
                     if (result == DialogResult.Cancel)
                         return;
 
-                    string savePath = $"{folderBrowserDialog_Updater.SelectedPath}\\{jo.SelectToken($"assets[{standaloneIndex}].name")}";
+                    UpdateSavePath = $"{folderBrowserDialog_Updater.SelectedPath}\\{jo.SelectToken($"assets[{standaloneIndex}].name")}";
                     try
                     {
-                        webClient.DownloadFileAsync(new Uri(standaloneURL), savePath);
+                        webClient.DownloadFileAsync(new Uri(standaloneURL), UpdateSavePath);
                     }
                     catch (WebException ex)
                     {
-                        MessageBox.Show($"An error occured during downloading: {ex.Message}{Environment.NewLine}Please try again later.", "Error - Update Tool", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"An error occured during downloading update: {ex.Message}{Environment.NewLine}Please try again later. If this problem persists, download the application directly from GitHub through button in the About dialog.", "(Error) Update Tool", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    System.Diagnostics.Process.Start("explorer.exe", $"/select,{savePath}");
                 }
 
                 else
@@ -227,6 +247,7 @@ namespace Morseapp_WinForms
         {
             toolStripStatusLabel.Text = "Download completed.";
             toolStripProgressBar.Value = toolStripProgressBar.Minimum;
+            System.Diagnostics.Process.Start("explorer.exe", $"/select,{UpdateSavePath}");
         }
 
         /*

@@ -11,9 +11,9 @@ namespace Morseapp_WinForms
     public static class Morse
     {
         /// <summary>
-        /// Sorted list used for encoding and decoding between ASCII and Morse Code.
+        /// Sorted list used for encoding and decoding between ASCII and Morse code.
         /// Key<char> = ASCII symbol
-        /// Value<string> = Corresponding Morse Code word
+        /// Value<string> = Corresponding Morse code word
         /// </summary>
         private static readonly SortedList<char, string> morseList = new()
         {
@@ -75,10 +75,10 @@ namespace Morseapp_WinForms
         };
 
         /// <summary>
-        /// Method for encoding ASCII symbols into Morse Code words.
+        /// Method for encoding ASCII symbols into Morse code words.
         /// </summary>
         /// <param name="input">String entered by user consisting of ASCII symbols.</param>
-        /// <returns>Returns encoded string of Morse Code words.</returns>
+        /// <returns>Returns encoded string of Morse code words.</returns>
         public static string Coder(string input)
         {
             input = input.ToLower();
@@ -96,9 +96,9 @@ namespace Morseapp_WinForms
         }
 
         /// <summary>
-        /// Method for decoding Morse Code words into ASCII symbols.
+        /// Method for decoding Morse code words into ASCII symbols.
         /// </summary>
-        /// <param name="input">String entered by user consisting of valid Morse Code words, each separated by space.</param>
+        /// <param name="input">String entered by user consisting of valid Morse code words, each separated by space.</param>
         /// <returns>Returns decoded Morse code as string of ASCII symbols.</returns>
         public static string Decoder(string input)
         {
@@ -117,7 +117,7 @@ namespace Morseapp_WinForms
 
                 codeWordIndex = morseList.IndexOfValue(codeWord);
                 if (codeWordIndex == -1)
-                    return "Error: Input text contains unknown Morse Code words that can't be decoded.";
+                    return "Error: Input text contains unknown Morse code words that can't be decoded.";
 
                 List<char> keys = morseList.Keys.ToList();
                 decoded.Append(Convert.ToChar(keys[codeWordIndex]));
@@ -129,9 +129,9 @@ namespace Morseapp_WinForms
         }
 
         /// <summary>
-        /// Method for playing Morse Code with sound per character.
+        /// Method for playing Morse code with sound per character.
         /// </summary>
-        /// <param name="input">Char passed on consisting of single valid Morse Code symbol.</param>
+        /// <param name="input">Char passed on consisting of single valid Morse code symbol.</param>
         /// <param name="frequency">Adjustable frequency of sound.</param>
         /// <param name="timeUnit">Adjustable length of one time unit in milliseconds.</param>
         /// <param name="strict">Enable or disable strict waiting between Morse symbols.</param>
@@ -181,9 +181,9 @@ namespace Morseapp_WinForms
         }
 
         /// <summary>
-        /// Method for playing Morse Code with sound as a whole string.
+        /// Method for playing Morse code with sound as a whole string.
         /// </summary>
-        /// <param name="input">String passed on consisting of valid Morse Code symbols.</param>
+        /// <param name="input">String passed on consisting of valid Morse code symbols.</param>
         /// <param name="frequency">Adjustable frequency of sound.</param>
         /// <param name="timeUnit">Adjustable length of one time unit in milliseconds.</param>
         /// <param name="strict">Enable or disable strict waiting between Morse symbols.</param>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Morseapp_WinForms
 {
@@ -20,7 +21,7 @@ namespace Morseapp_WinForms
         string SYSMENU_EnableVisualStyles;
         string SYSMENU_About;
 
-        string MESSAGEBOX_About_Text;
+        string[] MESSAGEBOX_About_Text;
         string MESSAGEBOX_About_Title;
 
         string STATUS_Default;
@@ -77,7 +78,6 @@ namespace Morseapp_WinForms
         string NAME_Config_App_LangChanged_NoteRestart;
         string NAME_Config_App_Dynamic;
         string NAME_Config_App_Explicit;
-        string NAME_Config_App_GitHub;
         string NAME_Config_App_About;
         string NAME_Config_Player;
         string NAME_Config_Player_Speed;
@@ -105,19 +105,25 @@ namespace Morseapp_WinForms
                 SYSMENU_EnableVisualStyles = "&Povolit Vizuální styly";
                 SYSMENU_About = "&O aplikaci...";
 
-                MESSAGEBOX_About_Text = $"Grafické uživatelské rozhraní pro {System.Windows.Forms.Application.ProductName}.{Environment.NewLine}" +
-                    $"\t\tVerze {System.Windows.Forms.Application.ProductVersion}{Environment.NewLine}" +
-                    $"Vytvořeno pomocí Windows Forms v .NET {Environment.Version}{Environment.NewLine}" +
-                    $"Aplikace\t\t©2021 Petr Mařák{Environment.NewLine}" +
-                    $"Morseův kód\t©1838 Samuel Morse{Environment.NewLine}" +
-                    $"Ikona aplikace\thttps://flaticon.com{Environment.NewLine}" +
-                    $"Další ikony\t©2021 Microsoft Corporation{Environment.NewLine}" +
-                    $"Poskytovatel vtipů\thttps://api.chucknorris.io/jokes/random{Environment.NewLine}";
+                MESSAGEBOX_About_Text = new string[]
+                {
+                    $"Graphical User Interface for {Application.ProductName}.",
+                    $"\t\tVersion {Application.ProductVersion}",
+                    $"Created using Windows Forms in .NET {Environment.Version}",
+                    string.Empty,
+                    $"Application\t©2021 Petr Mařák",
+                    $"Morse code\t©1838 Samuel Morse",
+                    $"App icon\thttps://flaticon.com",
+                    $"Other icons\t©2021 Microsoft Corporation",
+                    $"Jokes providers\thttps://v2.jokeapi.dev",
+                    "\t\thttps://api.chucknorris.io",
+                    "\t\thttps://official-joke-api.appspot.com"
+                };
                 MESSAGEBOX_About_Title = "O aplikaci";
 
                 STATUS_Default = "Najeďte myší nad položky pro více informací";
                 STATUS_Button_Copy = "Kliknutím se zkopíruje veškerý text";
-
+                
                 // Coder
                 NAME_Coder = "Kodér";
                 NAME_Coder_Input = "Vstupní text:";
@@ -133,7 +139,7 @@ namespace Morseapp_WinForms
                 STATUS_Coder_Output = "Vygenerovaný Morseův kód ze vstupního textu";
                 STATUS_Coder_Tip_Title = "Nápověda:";
                 STATUS_Coder_Tip_Caption = "Napsaný text → vygenerovaný Morseův kód";
-
+                
                 // localization
                 Coder.Text = NAME_Coder;
                 Coder_label_Input.Text = NAME_Coder_Input;
@@ -191,7 +197,6 @@ namespace Morseapp_WinForms
                 NAME_Config_App_LangChanged_NoteRestart = "Restartovat nyní.";
                 NAME_Config_App_Dynamic = "Dynamický překlad";
                 NAME_Config_App_Explicit = "Povolit explicitní vtipy";
-                NAME_Config_App_GitHub = "Domovská stránka:";
                 NAME_Config_App_About = "     O aplikaci";
                 NAME_Config_Player = "Nastavení přehrávače";
                 NAME_Config_Player_Speed = "Rychlost přehrávání:";
@@ -214,7 +219,6 @@ namespace Morseapp_WinForms
                 Config_App_linkLabel_LangChanged.Text = NAME_Config_App_LangChanged_NoteRestart;
                 Config_App_checkBox_Dynamic.Text = NAME_Config_App_Dynamic;
                 Config_App_checkBox_JokeOption.Text = NAME_Config_App_Explicit;
-                Config_App_label_GitHub.Text = NAME_Config_App_GitHub;
                 Config_App_button_About.Text = NAME_Config_App_About;
                 Config_groupBox_Player.Text = NAME_Config_Player;
                 Config_Player_label_Speed.Text = NAME_Config_Player_Speed;
@@ -230,14 +234,20 @@ namespace Morseapp_WinForms
                 SYSMENU_Restart = "&Restart";
                 SYSMENU_EnableVisualStyles = "&Enable Visual styles";
                 SYSMENU_About = "&About…";
-                MESSAGEBOX_About_Text = $"Graphical User Interface for {System.Windows.Forms.Application.ProductName}.{Environment.NewLine}" +
-                    $"\t\tVersion {System.Windows.Forms.Application.ProductVersion}{Environment.NewLine}" +
-                    $"Created using Windows Forms in .NET {Environment.Version}{Environment.NewLine}" +
-                    $"Application\t©2021 Petr Mařák{Environment.NewLine}" +
-                    $"Morse Code\t©1838 Samuel Morse{Environment.NewLine}" +
-                    $"App icon\t\thttps://flaticon.com{Environment.NewLine}" +
-                    $"Other icons\t©2021 Microsoft Corporation{Environment.NewLine}" +
-                    $"Jokes provider\thttps://api.chucknorris.io/jokes/random";
+                MESSAGEBOX_About_Text = new string[]
+                {
+                    $"Graphical User Interface for {Application.ProductName}.",
+                    $"\t\tVersion {Application.ProductVersion}",
+                    $"Created using Windows Forms in .NET {Environment.Version}",
+                    string.Empty,
+                    $"Application\t©2021 Petr Mařák",
+                    $"Morse code\t©1838 Samuel Morse",
+                    $"App icon\thttps://flaticon.com",
+                    $"Other icons\t©2021 Microsoft Corporation",
+                    $"Jokes providers\thttps://v2.jokeapi.dev",
+                    "\t\thttps://api.chucknorris.io",
+                    "\t\thttps://official-joke-api.appspot.com"
+                };
                 MESSAGEBOX_About_Title = "About";
                 STATUS_Default = "Hover over items for more details";
                 STATUS_Button_Copy = "Click to copy all text";
@@ -245,18 +255,18 @@ namespace Morseapp_WinForms
                 STATUS_Coder_Input = "Write text consisting of standard alphanumeric symbols";
                 STATUS_Coder_Joke_Hover = "Downloads joke from the internet";
                 STATUS_Coder_Joke_Invoked = "Joke is being downloaded...";
-                STATUS_Coder_Convert = "Convert to Morse Code";
-                STATUS_Coder_Output = "Converted Morse Code from standard text";
+                STATUS_Coder_Convert = "Convert to Morse code";
+                STATUS_Coder_Output = "Converted Morse code from standard text";
                 STATUS_Coder_Tip_Title = "Hint:";
-                STATUS_Coder_Tip_Caption = "Written text → Converted Morse Code";
-                STATUS_Decoder_Input = "Write Morse Code";
-                STATUS_Decoder_Convert = "Get standard text from Morse Code";
-                STATUS_Decoder_Output = "Translated text from inputted Morse Code";
+                STATUS_Coder_Tip_Caption = "Written text → Converted Morse code";
+                STATUS_Decoder_Input = "Write Morse code";
+                STATUS_Decoder_Convert = "Get standard text from Morse code";
+                STATUS_Decoder_Output = "Translated text from inputted Morse code";
                 STATUS_Decoder_Tip_Title = "Hint:";
-                STATUS_Decoder_Tip_Caption = "Written Morse Code → Decoded text";
-                STATUS_Player_Input = "Write Morse Code for playback";
-                STATUS_Player_PlaySound_Hover = "Play result Morse Code with sound";
-                STATUS_Player_PlaySound_Invoked = "Morse Code is being played - press Esc to STOP";
+                STATUS_Decoder_Tip_Caption = "Written Morse code → Decoded text";
+                STATUS_Player_Input = "Write Morse code for playback";
+                STATUS_Player_PlaySound_Hover = "Play result Morse code with sound";
+                STATUS_Player_PlaySound_Invoked = "Morse code is being played - press Esc to STOP";
                 STATUS_Player_StopSound = "Stop playback";
                 STATUS_Dictionary_RichTextBox = "Press Ctrl+A to select all text and Ctrl+C to copy the contents";
                 STATUS_Dictionary_Refresh = "Refresh the table";

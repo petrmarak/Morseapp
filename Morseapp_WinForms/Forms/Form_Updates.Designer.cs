@@ -69,8 +69,8 @@ namespace Morseapp_WinForms
             this.button_Dependent.Size = new System.Drawing.Size(125, 30);
             this.button_Dependent.TabIndex = 2;
             this.button_Dependent.Text = ".NET Dependent";
-            this.toolTip.SetToolTip(this.button_Dependent, "Requires Microsoft .NET Runtime to be installed. Application asks for it if neces" +
-        "sary. Very small size.");
+            this.toolTip.SetToolTip(this.button_Dependent, "Recommended. Requires Microsoft .NET runtime to be installed - application will t" +
+        "ell you if it\'s necessary. Very small size.");
             this.button_Dependent.UseVisualStyleBackColor = true;
             this.button_Dependent.Click += new System.EventHandler(this.button_Dependent_Click);
             // 
@@ -82,7 +82,7 @@ namespace Morseapp_WinForms
             this.button_Standalone.Size = new System.Drawing.Size(125, 30);
             this.button_Standalone.TabIndex = 3;
             this.button_Standalone.Text = "Standalone";
-            this.toolTip.SetToolTip(this.button_Standalone, "Single .exe file with no extra requirements. Takes up more disk space.");
+            this.toolTip.SetToolTip(this.button_Standalone, "Single .exe file with .NET runtime built-in. Significantly larger size.");
             this.button_Standalone.UseVisualStyleBackColor = true;
             this.button_Standalone.Click += new System.EventHandler(this.button_Standalone_Click);
             // 
@@ -110,10 +110,10 @@ namespace Morseapp_WinForms
             // 
             this.label_Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label_Title.AutoSize = true;
-            this.label_Title.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_Title.Location = new System.Drawing.Point(68, 12);
             this.label_Title.Name = "label_Title";
-            this.label_Title.Size = new System.Drawing.Size(240, 25);
+            this.label_Title.Size = new System.Drawing.Size(209, 21);
             this.label_Title.TabIndex = 5;
             this.label_Title.Text = "A new update is available.";
             // 
@@ -123,14 +123,16 @@ namespace Morseapp_WinForms
             this.label_Choose.AutoSize = true;
             this.label_Choose.Location = new System.Drawing.Point(11, 126);
             this.label_Choose.Name = "label_Choose";
-            this.label_Choose.Size = new System.Drawing.Size(236, 15);
+            this.label_Choose.Size = new System.Drawing.Size(360, 15);
             this.label_Choose.TabIndex = 6;
-            this.label_Choose.Text = "Which edition would you like to download?";
+            this.label_Choose.Text = "Which edition would you like to download? Hover for more details.";
             // 
             // Form_Updates
             // 
+            this.AcceptButton = this.button_Dependent;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Cancel;
             this.ClientSize = new System.Drawing.Size(409, 186);
             this.Controls.Add(this.label_Choose);
             this.Controls.Add(this.label_Title);
@@ -139,8 +141,11 @@ namespace Morseapp_WinForms
             this.Controls.Add(this.button_Dependent);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label_Changelog);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "Form_Updates";
-            this.Text = "Form_Updates";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Update Tool";
             this.Load += new System.EventHandler(this.Form_Updates_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

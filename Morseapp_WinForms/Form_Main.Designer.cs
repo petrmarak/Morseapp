@@ -70,10 +70,8 @@ namespace Morseapp_WinForms
             this.Config_App_button_Updates = new System.Windows.Forms.Button();
             this.Config_App_label_Jokes = new System.Windows.Forms.Label();
             this.Config_App_comboBox_Jokes = new System.Windows.Forms.ComboBox();
-            this.Config_App_linkLabel_GitHubPage = new System.Windows.Forms.LinkLabel();
-            this.Config_App_label_GitHub = new System.Windows.Forms.Label();
             this.Config_App_button_About = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Config_App_pictureBox_Icon = new System.Windows.Forms.PictureBox();
             this.Config_App_checkBox_JokeOption = new System.Windows.Forms.CheckBox();
             this.Config_App_label_LangChanged = new System.Windows.Forms.Label();
             this.Config_App_linkLabel_LangChanged = new System.Windows.Forms.LinkLabel();
@@ -81,7 +79,7 @@ namespace Morseapp_WinForms
             this.Config_App_label_Lang = new System.Windows.Forms.Label();
             this.Config_App_comboBox_Lang = new System.Windows.Forms.ComboBox();
             this.Config_groupBox_Player = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Config_Player_pictureBox_Icon = new System.Windows.Forms.PictureBox();
             this.Config_Player_label_CurrentFreq = new System.Windows.Forms.Label();
             this.Config_Player_label_CurrentSpeed = new System.Windows.Forms.Label();
             this.Config_Player_label_Freq = new System.Windows.Forms.Label();
@@ -102,9 +100,9 @@ namespace Morseapp_WinForms
             this.Dictionary.SuspendLayout();
             this.Configuration.SuspendLayout();
             this.Config_groupBox_App.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Config_App_pictureBox_Icon)).BeginInit();
             this.Config_groupBox_Player.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Config_Player_pictureBox_Icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Config_Player_trackBar_Freq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Config_Player_trackBar_Speed)).BeginInit();
             this.statusStrip.SuspendLayout();
@@ -117,10 +115,15 @@ namespace Morseapp_WinForms
             this.tabControl_Main.Controls.Add(this.Player);
             this.tabControl_Main.Controls.Add(this.Dictionary);
             this.tabControl_Main.Controls.Add(this.Configuration);
-            resources.ApplyResources(this.tabControl_Main, "tabControl_Main");
+            this.tabControl_Main.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl_Main.Location = new System.Drawing.Point(0, 0);
             this.tabControl_Main.Multiline = true;
             this.tabControl_Main.Name = "tabControl_Main";
+            this.tabControl_Main.Padding = new System.Drawing.Point(9, 3);
             this.tabControl_Main.SelectedIndex = 0;
+            this.tabControl_Main.ShowToolTips = true;
+            this.tabControl_Main.Size = new System.Drawing.Size(584, 361);
+            this.tabControl_Main.TabIndex = 0;
             this.tabControl_Main.SelectedIndexChanged += new System.EventHandler(this.TabControl_Main_SelectedIndexChanged);
             // 
             // Coder
@@ -138,39 +141,60 @@ namespace Morseapp_WinForms
             this.Coder.Controls.Add(this.Coder_textBox_Input);
             this.Coder.Controls.Add(this.Coder_button_Convert);
             this.Coder.Controls.Add(this.Coder_label_Tip);
-            resources.ApplyResources(this.Coder, "Coder");
+            this.Coder.Location = new System.Drawing.Point(4, 24);
             this.Coder.Name = "Coder";
+            this.Coder.Padding = new System.Windows.Forms.Padding(3);
+            this.Coder.Size = new System.Drawing.Size(576, 333);
+            this.Coder.TabIndex = 0;
+            this.Coder.Text = "Coder";
             this.Coder.UseVisualStyleBackColor = true;
             // 
             // Coder_button_while
             // 
-            resources.ApplyResources(this.Coder_button_while, "Coder_button_while");
+            this.Coder_button_while.Location = new System.Drawing.Point(113, 84);
             this.Coder_button_while.Name = "Coder_button_while";
+            this.Coder_button_while.Size = new System.Drawing.Size(75, 23);
+            this.Coder_button_while.TabIndex = 11;
+            this.Coder_button_while.Text = "while()";
             this.Coder_button_while.UseVisualStyleBackColor = true;
             this.Coder_button_while.Click += new System.EventHandler(this.Coder_button_while_Click);
             // 
             // Coder_button_Copy
             // 
-            resources.ApplyResources(this.Coder_button_Copy, "Coder_button_Copy");
+            this.Coder_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Coder_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Coder_button_Copy.Location = new System.Drawing.Point(24, 197);
             this.Coder_button_Copy.Name = "Coder_button_Copy";
+            this.Coder_button_Copy.Size = new System.Drawing.Size(25, 25);
+            this.Coder_button_Copy.TabIndex = 10;
+            this.Coder_button_Copy.Text = "⎘";
             this.Coder_button_Copy.UseVisualStyleBackColor = true;
+            this.Coder_button_Copy.Visible = false;
             this.Coder_button_Copy.Click += new System.EventHandler(this.Coder_button_Copy_Click);
             this.Coder_button_Copy.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Coder_button_Copy.MouseHover += new System.EventHandler(this.Coder_button_Copy_MouseHover);
             // 
             // Coder_button_StopSound
             // 
-            resources.ApplyResources(this.Coder_button_StopSound, "Coder_button_StopSound");
+            this.Coder_button_StopSound.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Coder_button_StopSound.Location = new System.Drawing.Point(138, 244);
             this.Coder_button_StopSound.Name = "Coder_button_StopSound";
+            this.Coder_button_StopSound.Size = new System.Drawing.Size(25, 25);
+            this.Coder_button_StopSound.TabIndex = 9;
+            this.Coder_button_StopSound.Text = "■";
             this.Coder_button_StopSound.UseVisualStyleBackColor = true;
+            this.Coder_button_StopSound.Visible = false;
             this.Coder_button_StopSound.Click += new System.EventHandler(this.Coder_button_StopSound_Click);
             this.Coder_button_StopSound.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Coder_button_StopSound.MouseHover += new System.EventHandler(this.Button_StopSound_MouseHover);
             // 
             // Coder_button_Joke
             // 
-            resources.ApplyResources(this.Coder_button_Joke, "Coder_button_Joke");
+            this.Coder_button_Joke.Location = new System.Drawing.Point(25, 89);
             this.Coder_button_Joke.Name = "Coder_button_Joke";
+            this.Coder_button_Joke.Size = new System.Drawing.Size(75, 25);
+            this.Coder_button_Joke.TabIndex = 8;
+            this.Coder_button_Joke.Text = "Insert joke";
             this.Coder_button_Joke.UseVisualStyleBackColor = true;
             this.Coder_button_Joke.Click += new System.EventHandler(this.Coder_button_Joke_Click);
             this.Coder_button_Joke.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -182,26 +206,37 @@ namespace Morseapp_WinForms
             this.Coder_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Coder_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.Coder_button_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.Coder_button_Settings, "Coder_button_Settings");
+            this.Coder_button_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Coder_button_Settings.Image = global::Morseapp_WinForms.Properties.Resources.settings_24;
+            this.Coder_button_Settings.Location = new System.Drawing.Point(548, 286);
             this.Coder_button_Settings.Name = "Coder_button_Settings";
-            this.toolTip.SetToolTip(this.Coder_button_Settings, resources.GetString("Coder_button_Settings.ToolTip"));
+            this.Coder_button_Settings.Size = new System.Drawing.Size(27, 27);
+            this.Coder_button_Settings.TabIndex = 7;
+            this.toolTip.SetToolTip(this.Coder_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
+        "d dynamically.");
             this.Coder_button_Settings.UseVisualStyleBackColor = true;
             this.Coder_button_Settings.Click += new System.EventHandler(this.Coder_button_Settings_Click);
             // 
             // Coder_button_PlaySound
             // 
-            resources.ApplyResources(this.Coder_button_PlaySound, "Coder_button_PlaySound");
+            this.Coder_button_PlaySound.Location = new System.Drawing.Point(113, 208);
             this.Coder_button_PlaySound.Name = "Coder_button_PlaySound";
+            this.Coder_button_PlaySound.Size = new System.Drawing.Size(75, 30);
+            this.Coder_button_PlaySound.TabIndex = 6;
+            this.Coder_button_PlaySound.Text = "▶️";
             this.Coder_button_PlaySound.UseVisualStyleBackColor = true;
+            this.Coder_button_PlaySound.Visible = false;
             this.Coder_button_PlaySound.Click += new System.EventHandler(this.Button_PlaySound_Click);
             this.Coder_button_PlaySound.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Coder_button_PlaySound.MouseHover += new System.EventHandler(this.Coder_button_PlaySound_MouseHover);
             // 
             // Coder_textBox_Output
             // 
-            resources.ApplyResources(this.Coder_textBox_Output, "Coder_textBox_Output");
+            this.Coder_textBox_Output.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Coder_textBox_Output.Location = new System.Drawing.Point(25, 173);
             this.Coder_textBox_Output.Name = "Coder_textBox_Output";
+            this.Coder_textBox_Output.Size = new System.Drawing.Size(250, 23);
+            this.Coder_textBox_Output.TabIndex = 4;
             this.Coder_textBox_Output.TextChanged += new System.EventHandler(this.Coder_textBox_Output_TextChanged);
             this.Coder_textBox_Output.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Coder_textBox_Output_KeyDown);
             this.Coder_textBox_Output.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -209,18 +244,28 @@ namespace Morseapp_WinForms
             // 
             // Coder_label_Output
             // 
-            resources.ApplyResources(this.Coder_label_Output, "Coder_label_Output");
+            this.Coder_label_Output.AutoSize = true;
+            this.Coder_label_Output.Location = new System.Drawing.Point(25, 155);
             this.Coder_label_Output.Name = "Coder_label_Output";
+            this.Coder_label_Output.Size = new System.Drawing.Size(42, 15);
+            this.Coder_label_Output.TabIndex = 3;
+            this.Coder_label_Output.Text = "Result:";
             // 
             // Coder_label_Input
             // 
-            resources.ApplyResources(this.Coder_label_Input, "Coder_label_Input");
+            this.Coder_label_Input.AutoSize = true;
+            this.Coder_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Coder_label_Input.Name = "Coder_label_Input";
+            this.Coder_label_Input.Size = new System.Drawing.Size(61, 15);
+            this.Coder_label_Input.TabIndex = 2;
+            this.Coder_label_Input.Text = "Input text:";
             // 
             // Coder_textBox_Input
             // 
-            resources.ApplyResources(this.Coder_textBox_Input, "Coder_textBox_Input");
+            this.Coder_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Coder_textBox_Input.Name = "Coder_textBox_Input";
+            this.Coder_textBox_Input.Size = new System.Drawing.Size(250, 23);
+            this.Coder_textBox_Input.TabIndex = 1;
             this.Coder_textBox_Input.TextChanged += new System.EventHandler(this.Coder_textBox_Input_TextChanged);
             this.Coder_textBox_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Coder_textBox_Input_KeyDown);
             this.Coder_textBox_Input.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -228,8 +273,11 @@ namespace Morseapp_WinForms
             // 
             // Coder_button_Convert
             // 
-            resources.ApplyResources(this.Coder_button_Convert, "Coder_button_Convert");
+            this.Coder_button_Convert.Location = new System.Drawing.Point(113, 113);
             this.Coder_button_Convert.Name = "Coder_button_Convert";
+            this.Coder_button_Convert.Size = new System.Drawing.Size(75, 30);
+            this.Coder_button_Convert.TabIndex = 0;
+            this.Coder_button_Convert.Text = "Convert";
             this.Coder_button_Convert.UseVisualStyleBackColor = true;
             this.Coder_button_Convert.Click += new System.EventHandler(this.Coder_button_Convert_Click);
             this.Coder_button_Convert.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -237,13 +285,19 @@ namespace Morseapp_WinForms
             // 
             // Coder_label_Tip
             // 
-            resources.ApplyResources(this.Coder_label_Tip, "Coder_label_Tip");
+            this.Coder_label_Tip.AutoSize = true;
             this.Coder_label_Tip.BackColor = System.Drawing.Color.Transparent;
             this.Coder_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Coder_label_Tip.Cursor = System.Windows.Forms.Cursors.Help;
             this.Coder_label_Tip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Coder_label_Tip.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Coder_label_Tip.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Coder_label_Tip.Location = new System.Drawing.Point(420, 10);
             this.Coder_label_Tip.Name = "Coder_label_Tip";
+            this.Coder_label_Tip.Size = new System.Drawing.Size(144, 36);
+            this.Coder_label_Tip.TabIndex = 5;
+            this.Coder_label_Tip.Text = "SOS → ... --- ...";
+            this.Coder_label_Tip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Coder_label_Tip.MouseHover += new System.EventHandler(this.Coder_label_Tip_MouseHover);
             // 
             // Decoder
@@ -256,15 +310,26 @@ namespace Morseapp_WinForms
             this.Decoder.Controls.Add(this.Decoder_label_Input);
             this.Decoder.Controls.Add(this.Decoder_textBox_Input);
             this.Decoder.Controls.Add(this.Decoder_button_Convert);
-            resources.ApplyResources(this.Decoder, "Decoder");
+            this.Decoder.Location = new System.Drawing.Point(4, 24);
             this.Decoder.Name = "Decoder";
+            this.Decoder.Padding = new System.Windows.Forms.Padding(3);
+            this.Decoder.Size = new System.Drawing.Size(576, 333);
+            this.Decoder.TabIndex = 1;
+            this.Decoder.Text = "Decoder";
             this.Decoder.UseVisualStyleBackColor = true;
             // 
             // Decoder_button_Copy
             // 
-            resources.ApplyResources(this.Decoder_button_Copy, "Decoder_button_Copy");
+            this.Decoder_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.Decoder_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Decoder_button_Copy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Decoder_button_Copy.Location = new System.Drawing.Point(24, 197);
             this.Decoder_button_Copy.Name = "Decoder_button_Copy";
+            this.Decoder_button_Copy.Size = new System.Drawing.Size(25, 25);
+            this.Decoder_button_Copy.TabIndex = 12;
+            this.Decoder_button_Copy.Text = "⎘";
             this.Decoder_button_Copy.UseVisualStyleBackColor = true;
+            this.Decoder_button_Copy.Visible = false;
             this.Decoder_button_Copy.Click += new System.EventHandler(this.Decoder_button_Copy_Click);
             this.Decoder_button_Copy.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Decoder_button_Copy.MouseHover += new System.EventHandler(this.Decoder_button_Copy_MouseHover);
@@ -275,26 +340,38 @@ namespace Morseapp_WinForms
             this.Decoder_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Decoder_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.Decoder_button_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.Decoder_button_Settings, "Decoder_button_Settings");
+            this.Decoder_button_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Decoder_button_Settings.Image = global::Morseapp_WinForms.Properties.Resources.settings_24;
+            this.Decoder_button_Settings.Location = new System.Drawing.Point(548, 286);
             this.Decoder_button_Settings.Name = "Decoder_button_Settings";
-            this.toolTip.SetToolTip(this.Decoder_button_Settings, resources.GetString("Decoder_button_Settings.ToolTip"));
+            this.Decoder_button_Settings.Size = new System.Drawing.Size(27, 27);
+            this.Decoder_button_Settings.TabIndex = 11;
+            this.toolTip.SetToolTip(this.Decoder_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
+        "d dynamically.");
             this.Decoder_button_Settings.UseVisualStyleBackColor = true;
             this.Decoder_button_Settings.Click += new System.EventHandler(this.Decoder_button_Settings_Click);
             // 
             // Decoder_label_Tip
             // 
-            resources.ApplyResources(this.Decoder_label_Tip, "Decoder_label_Tip");
+            this.Decoder_label_Tip.AutoSize = true;
             this.Decoder_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Decoder_label_Tip.Cursor = System.Windows.Forms.Cursors.Help;
             this.Decoder_label_Tip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Decoder_label_Tip.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Decoder_label_Tip.Location = new System.Drawing.Point(420, 10);
             this.Decoder_label_Tip.Name = "Decoder_label_Tip";
+            this.Decoder_label_Tip.Size = new System.Drawing.Size(144, 36);
+            this.Decoder_label_Tip.TabIndex = 10;
+            this.Decoder_label_Tip.Text = "... --- ... → SOS";
+            this.Decoder_label_Tip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Decoder_label_Tip.MouseHover += new System.EventHandler(this.Decoder_label_Tip_MouseHover);
             // 
             // Decoder_textBox_Output
             // 
-            resources.ApplyResources(this.Decoder_textBox_Output, "Decoder_textBox_Output");
+            this.Decoder_textBox_Output.Location = new System.Drawing.Point(25, 173);
             this.Decoder_textBox_Output.Name = "Decoder_textBox_Output";
+            this.Decoder_textBox_Output.Size = new System.Drawing.Size(250, 23);
+            this.Decoder_textBox_Output.TabIndex = 9;
             this.Decoder_textBox_Output.TextChanged += new System.EventHandler(this.Decoder_textBox_Output_TextChanged);
             this.Decoder_textBox_Output.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Decoder_textBox_Output_KeyDown);
             this.Decoder_textBox_Output.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -302,18 +379,28 @@ namespace Morseapp_WinForms
             // 
             // Decoder_label_Output
             // 
-            resources.ApplyResources(this.Decoder_label_Output, "Decoder_label_Output");
+            this.Decoder_label_Output.AutoSize = true;
+            this.Decoder_label_Output.Location = new System.Drawing.Point(25, 155);
             this.Decoder_label_Output.Name = "Decoder_label_Output";
+            this.Decoder_label_Output.Size = new System.Drawing.Size(42, 15);
+            this.Decoder_label_Output.TabIndex = 8;
+            this.Decoder_label_Output.Text = "Result:";
             // 
             // Decoder_label_Input
             // 
-            resources.ApplyResources(this.Decoder_label_Input, "Decoder_label_Input");
+            this.Decoder_label_Input.AutoSize = true;
+            this.Decoder_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Decoder_label_Input.Name = "Decoder_label_Input";
+            this.Decoder_label_Input.Size = new System.Drawing.Size(103, 15);
+            this.Decoder_label_Input.TabIndex = 7;
+            this.Decoder_label_Input.Text = "Input Morse code:";
             // 
             // Decoder_textBox_Input
             // 
-            resources.ApplyResources(this.Decoder_textBox_Input, "Decoder_textBox_Input");
+            this.Decoder_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Decoder_textBox_Input.Name = "Decoder_textBox_Input";
+            this.Decoder_textBox_Input.Size = new System.Drawing.Size(250, 23);
+            this.Decoder_textBox_Input.TabIndex = 6;
             this.Decoder_textBox_Input.TextChanged += new System.EventHandler(this.Decoder_textBox_Input_TextChanged);
             this.Decoder_textBox_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Decoder_textBox_Input_KeyDown);
             this.Decoder_textBox_Input.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -321,8 +408,11 @@ namespace Morseapp_WinForms
             // 
             // Decoder_button_Convert
             // 
-            resources.ApplyResources(this.Decoder_button_Convert, "Decoder_button_Convert");
+            this.Decoder_button_Convert.Location = new System.Drawing.Point(113, 113);
             this.Decoder_button_Convert.Name = "Decoder_button_Convert";
+            this.Decoder_button_Convert.Size = new System.Drawing.Size(75, 30);
+            this.Decoder_button_Convert.TabIndex = 5;
+            this.Decoder_button_Convert.Text = "Convert";
             this.Decoder_button_Convert.UseVisualStyleBackColor = true;
             this.Decoder_button_Convert.Click += new System.EventHandler(this.Decoder_button_Convert_Click);
             this.Decoder_button_Convert.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -336,15 +426,22 @@ namespace Morseapp_WinForms
             this.Player.Controls.Add(this.Player_button_Play);
             this.Player.Controls.Add(this.Player_label_Input);
             this.Player.Controls.Add(this.Player_textBox_Input);
-            resources.ApplyResources(this.Player, "Player");
+            this.Player.Location = new System.Drawing.Point(4, 24);
             this.Player.Name = "Player";
+            this.Player.Size = new System.Drawing.Size(576, 333);
+            this.Player.TabIndex = 2;
+            this.Player.Text = "Player";
             this.Player.UseVisualStyleBackColor = true;
             // 
             // Player_button_StopSound
             // 
-            resources.ApplyResources(this.Player_button_StopSound, "Player_button_StopSound");
+            this.Player_button_StopSound.Location = new System.Drawing.Point(138, 149);
             this.Player_button_StopSound.Name = "Player_button_StopSound";
+            this.Player_button_StopSound.Size = new System.Drawing.Size(25, 25);
+            this.Player_button_StopSound.TabIndex = 13;
+            this.Player_button_StopSound.Text = "■";
             this.Player_button_StopSound.UseVisualStyleBackColor = true;
+            this.Player_button_StopSound.Visible = false;
             this.Player_button_StopSound.Click += new System.EventHandler(this.Player_button_StopSound_Click);
             this.Player_button_StopSound.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Player_button_StopSound.MouseHover += new System.EventHandler(this.Button_StopSound_MouseHover);
@@ -355,25 +452,38 @@ namespace Morseapp_WinForms
             this.Player_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Player_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.Player_button_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.Player_button_Settings, "Player_button_Settings");
+            this.Player_button_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Player_button_Settings.Image = global::Morseapp_WinForms.Properties.Resources.settings_24;
+            this.Player_button_Settings.Location = new System.Drawing.Point(548, 286);
             this.Player_button_Settings.Name = "Player_button_Settings";
-            this.toolTip.SetToolTip(this.Player_button_Settings, resources.GetString("Player_button_Settings.ToolTip"));
+            this.Player_button_Settings.Size = new System.Drawing.Size(27, 27);
+            this.Player_button_Settings.TabIndex = 12;
+            this.toolTip.SetToolTip(this.Player_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
+        "d dynamically.");
             this.Player_button_Settings.UseVisualStyleBackColor = true;
             this.Player_button_Settings.Click += new System.EventHandler(this.Player_button_Settings_Click);
             // 
             // Player_label_Tip
             // 
-            resources.ApplyResources(this.Player_label_Tip, "Player_label_Tip");
+            this.Player_label_Tip.AutoSize = true;
             this.Player_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Player_label_Tip.Cursor = System.Windows.Forms.Cursors.Help;
             this.Player_label_Tip.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Player_label_Tip.Font = new System.Drawing.Font("Myanmar Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Player_label_Tip.Location = new System.Drawing.Point(329, 10);
             this.Player_label_Tip.Name = "Player_label_Tip";
+            this.Player_label_Tip.Size = new System.Drawing.Size(235, 36);
+            this.Player_label_Tip.TabIndex = 11;
+            this.Player_label_Tip.Text = "... --- ... → ♪♪♪ ♫♫♫ ♪♪♪";
+            this.Player_label_Tip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Player_button_Play
             // 
-            resources.ApplyResources(this.Player_button_Play, "Player_button_Play");
+            this.Player_button_Play.Location = new System.Drawing.Point(113, 113);
             this.Player_button_Play.Name = "Player_button_Play";
+            this.Player_button_Play.Size = new System.Drawing.Size(75, 30);
+            this.Player_button_Play.TabIndex = 10;
+            this.Player_button_Play.Text = "▶️";
             this.Player_button_Play.UseVisualStyleBackColor = true;
             this.Player_button_Play.Click += new System.EventHandler(this.Button_PlaySound_Click);
             this.Player_button_Play.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -381,13 +491,19 @@ namespace Morseapp_WinForms
             // 
             // Player_label_Input
             // 
-            resources.ApplyResources(this.Player_label_Input, "Player_label_Input");
+            this.Player_label_Input.AutoSize = true;
+            this.Player_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Player_label_Input.Name = "Player_label_Input";
+            this.Player_label_Input.Size = new System.Drawing.Size(103, 15);
+            this.Player_label_Input.TabIndex = 9;
+            this.Player_label_Input.Text = "Input Morse code:";
             // 
             // Player_textBox_Input
             // 
-            resources.ApplyResources(this.Player_textBox_Input, "Player_textBox_Input");
+            this.Player_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Player_textBox_Input.Name = "Player_textBox_Input";
+            this.Player_textBox_Input.Size = new System.Drawing.Size(250, 23);
+            this.Player_textBox_Input.TabIndex = 8;
             this.Player_textBox_Input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Player_textBox_Input_KeyDown);
             this.Player_textBox_Input.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Player_textBox_Input.MouseHover += new System.EventHandler(this.Player_textBox_Input_MouseHover);
@@ -397,15 +513,24 @@ namespace Morseapp_WinForms
             this.Dictionary.Controls.Add(this.ShowDict_button_Copy);
             this.Dictionary.Controls.Add(this.ShowDict_button_Refresh);
             this.Dictionary.Controls.Add(this.ShowDict_richtextBox_Output);
-            resources.ApplyResources(this.Dictionary, "Dictionary");
+            this.Dictionary.Location = new System.Drawing.Point(4, 24);
             this.Dictionary.Name = "Dictionary";
+            this.Dictionary.Size = new System.Drawing.Size(576, 333);
+            this.Dictionary.TabIndex = 3;
+            this.Dictionary.Text = "Dictionary";
             this.Dictionary.UseVisualStyleBackColor = true;
             this.Dictionary.HandleCreated += new System.EventHandler(this.Dictionary_HandleCreated);
             // 
             // ShowDict_button_Copy
             // 
-            resources.ApplyResources(this.ShowDict_button_Copy, "ShowDict_button_Copy");
+            this.ShowDict_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ShowDict_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ShowDict_button_Copy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ShowDict_button_Copy.Location = new System.Drawing.Point(523, 288);
             this.ShowDict_button_Copy.Name = "ShowDict_button_Copy";
+            this.ShowDict_button_Copy.Size = new System.Drawing.Size(25, 25);
+            this.ShowDict_button_Copy.TabIndex = 13;
+            this.ShowDict_button_Copy.Text = "⎘";
             this.ShowDict_button_Copy.UseVisualStyleBackColor = true;
             this.ShowDict_button_Copy.Click += new System.EventHandler(this.ShowDict_button_Copy_Click);
             this.ShowDict_button_Copy.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -413,8 +538,11 @@ namespace Morseapp_WinForms
             // 
             // ShowDict_button_Refresh
             // 
-            resources.ApplyResources(this.ShowDict_button_Refresh, "ShowDict_button_Refresh");
+            this.ShowDict_button_Refresh.Location = new System.Drawing.Point(547, 288);
             this.ShowDict_button_Refresh.Name = "ShowDict_button_Refresh";
+            this.ShowDict_button_Refresh.Size = new System.Drawing.Size(25, 25);
+            this.ShowDict_button_Refresh.TabIndex = 1;
+            this.ShowDict_button_Refresh.Text = "↻";
             this.ShowDict_button_Refresh.UseVisualStyleBackColor = true;
             this.ShowDict_button_Refresh.Click += new System.EventHandler(this.ShowDict_button_Refresh_Click);
             this.ShowDict_button_Refresh.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
@@ -423,9 +551,14 @@ namespace Morseapp_WinForms
             // ShowDict_richtextBox_Output
             // 
             this.ShowDict_richtextBox_Output.BackColor = System.Drawing.Color.Beige;
-            resources.ApplyResources(this.ShowDict_richtextBox_Output, "ShowDict_richtextBox_Output");
+            this.ShowDict_richtextBox_Output.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ShowDict_richtextBox_Output.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ShowDict_richtextBox_Output.Location = new System.Drawing.Point(0, 0);
             this.ShowDict_richtextBox_Output.Name = "ShowDict_richtextBox_Output";
             this.ShowDict_richtextBox_Output.ReadOnly = true;
+            this.ShowDict_richtextBox_Output.Size = new System.Drawing.Size(576, 333);
+            this.ShowDict_richtextBox_Output.TabIndex = 0;
+            this.ShowDict_richtextBox_Output.Text = "";
             this.ShowDict_richtextBox_Output.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.ShowDict_richtextBox_Output.MouseHover += new System.EventHandler(this.ShowDict_richtextBox_Output_MouseHover);
             // 
@@ -434,138 +567,171 @@ namespace Morseapp_WinForms
             this.Configuration.BackColor = System.Drawing.SystemColors.Control;
             this.Configuration.Controls.Add(this.Config_groupBox_App);
             this.Configuration.Controls.Add(this.Config_groupBox_Player);
-            resources.ApplyResources(this.Configuration, "Configuration");
+            this.Configuration.Location = new System.Drawing.Point(4, 24);
             this.Configuration.Name = "Configuration";
+            this.Configuration.Size = new System.Drawing.Size(576, 333);
+            this.Configuration.TabIndex = 4;
+            this.Configuration.Text = "Configuration";
             // 
             // Config_groupBox_App
             // 
             this.Config_groupBox_App.Controls.Add(this.Config_App_button_Updates);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_Jokes);
             this.Config_groupBox_App.Controls.Add(this.Config_App_comboBox_Jokes);
-            this.Config_groupBox_App.Controls.Add(this.Config_App_linkLabel_GitHubPage);
-            this.Config_groupBox_App.Controls.Add(this.Config_App_label_GitHub);
             this.Config_groupBox_App.Controls.Add(this.Config_App_button_About);
-            this.Config_groupBox_App.Controls.Add(this.pictureBox1);
+            this.Config_groupBox_App.Controls.Add(this.Config_App_pictureBox_Icon);
             this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_JokeOption);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_linkLabel_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_Dynamic);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_Lang);
             this.Config_groupBox_App.Controls.Add(this.Config_App_comboBox_Lang);
-            resources.ApplyResources(this.Config_groupBox_App, "Config_groupBox_App");
+            this.Config_groupBox_App.Location = new System.Drawing.Point(11, 3);
             this.Config_groupBox_App.Name = "Config_groupBox_App";
+            this.Config_groupBox_App.Size = new System.Drawing.Size(555, 198);
+            this.Config_groupBox_App.TabIndex = 1;
             this.Config_groupBox_App.TabStop = false;
+            this.Config_groupBox_App.Text = " Application settings";
             // 
             // Config_App_button_Updates
             // 
-            resources.ApplyResources(this.Config_App_button_Updates, "Config_App_button_Updates");
+            this.Config_App_button_Updates.AutoSize = true;
+            this.Config_App_button_Updates.Location = new System.Drawing.Point(6, 162);
             this.Config_App_button_Updates.Name = "Config_App_button_Updates";
+            this.Config_App_button_Updates.Size = new System.Drawing.Size(114, 30);
+            this.Config_App_button_Updates.TabIndex = 13;
+            this.Config_App_button_Updates.Text = "Check for updates";
             this.Config_App_button_Updates.UseVisualStyleBackColor = true;
             this.Config_App_button_Updates.Click += new System.EventHandler(this.Config_App_button_Updates_Click);
             // 
             // Config_App_label_Jokes
             // 
-            resources.ApplyResources(this.Config_App_label_Jokes, "Config_App_label_Jokes");
+            this.Config_App_label_Jokes.AutoSize = true;
+            this.Config_App_label_Jokes.Location = new System.Drawing.Point(58, 97);
             this.Config_App_label_Jokes.Name = "Config_App_label_Jokes";
+            this.Config_App_label_Jokes.Size = new System.Drawing.Size(85, 15);
+            this.Config_App_label_Jokes.TabIndex = 12;
+            this.Config_App_label_Jokes.Text = "Jokes provider:";
             // 
             // Config_App_comboBox_Jokes
             // 
             this.Config_App_comboBox_Jokes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Config_App_comboBox_Jokes.FormattingEnabled = true;
             this.Config_App_comboBox_Jokes.Items.AddRange(new object[] {
-            resources.GetString("Config_App_comboBox_Jokes.Items"),
-            resources.GetString("Config_App_comboBox_Jokes.Items1"),
-            resources.GetString("Config_App_comboBox_Jokes.Items2")});
-            resources.ApplyResources(this.Config_App_comboBox_Jokes, "Config_App_comboBox_Jokes");
+            "JokeAPI",
+            "Chuck Norris",
+            "Official Joke API"});
+            this.Config_App_comboBox_Jokes.Location = new System.Drawing.Point(58, 115);
             this.Config_App_comboBox_Jokes.Name = "Config_App_comboBox_Jokes";
+            this.Config_App_comboBox_Jokes.Size = new System.Drawing.Size(121, 23);
+            this.Config_App_comboBox_Jokes.TabIndex = 0;
             this.Config_App_comboBox_Jokes.SelectedValueChanged += new System.EventHandler(this.Config_App_comboBox_Jokes_SelectedValueChanged);
-            // 
-            // Config_App_linkLabel_GitHubPage
-            // 
-            this.Config_App_linkLabel_GitHubPage.ActiveLinkColor = System.Drawing.Color.DarkTurquoise;
-            resources.ApplyResources(this.Config_App_linkLabel_GitHubPage, "Config_App_linkLabel_GitHubPage");
-            this.Config_App_linkLabel_GitHubPage.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.Config_App_linkLabel_GitHubPage.LinkColor = System.Drawing.SystemColors.Highlight;
-            this.Config_App_linkLabel_GitHubPage.Name = "Config_App_linkLabel_GitHubPage";
-            this.Config_App_linkLabel_GitHubPage.TabStop = true;
-            this.Config_App_linkLabel_GitHubPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Config_App_linkLabel_GitHubPage_LinkClicked);
-            this.Config_App_linkLabel_GitHubPage.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
-            this.Config_App_linkLabel_GitHubPage.MouseHover += new System.EventHandler(this.Config_App_linkLabel_GitHubPage_MouseHover);
-            // 
-            // Config_App_label_GitHub
-            // 
-            resources.ApplyResources(this.Config_App_label_GitHub, "Config_App_label_GitHub");
-            this.Config_App_label_GitHub.Name = "Config_App_label_GitHub";
             // 
             // Config_App_button_About
             // 
-            resources.ApplyResources(this.Config_App_button_About, "Config_App_button_About");
+            this.Config_App_button_About.AutoSize = true;
+            this.Config_App_button_About.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Config_App_button_About.Image = global::Morseapp_WinForms.Properties.Resources.info_16;
+            this.Config_App_button_About.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Config_App_button_About.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Config_App_button_About.Location = new System.Drawing.Point(469, 162);
             this.Config_App_button_About.Name = "Config_App_button_About";
+            this.Config_App_button_About.Size = new System.Drawing.Size(75, 30);
+            this.Config_App_button_About.TabIndex = 9;
+            this.Config_App_button_About.Text = "About...";
+            this.Config_App_button_About.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Config_App_button_About.UseVisualStyleBackColor = true;
             this.Config_App_button_About.Click += new System.EventHandler(this.Config_App_button_About_Click);
             // 
-            // pictureBox1
+            // Config_App_pictureBox_Icon
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Image = global::Morseapp_WinForms.Properties.Resources.app_settings_40;
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            this.Config_App_pictureBox_Icon.Image = global::Morseapp_WinForms.Properties.Resources.app_settings_40;
+            this.Config_App_pictureBox_Icon.Location = new System.Drawing.Point(6, 26);
+            this.Config_App_pictureBox_Icon.Name = "Config_App_pictureBox_Icon";
+            this.Config_App_pictureBox_Icon.Size = new System.Drawing.Size(40, 40);
+            this.Config_App_pictureBox_Icon.TabIndex = 14;
+            this.Config_App_pictureBox_Icon.TabStop = false;
             // 
             // Config_App_checkBox_JokeOption
             // 
-            resources.ApplyResources(this.Config_App_checkBox_JokeOption, "Config_App_checkBox_JokeOption");
+            this.Config_App_checkBox_JokeOption.AutoSize = true;
+            this.Config_App_checkBox_JokeOption.Location = new System.Drawing.Point(208, 115);
             this.Config_App_checkBox_JokeOption.Name = "Config_App_checkBox_JokeOption";
+            this.Config_App_checkBox_JokeOption.Size = new System.Drawing.Size(127, 19);
+            this.Config_App_checkBox_JokeOption.TabIndex = 14;
+            this.Config_App_checkBox_JokeOption.Text = "Allow explicit jokes";
             this.Config_App_checkBox_JokeOption.UseVisualStyleBackColor = true;
             this.Config_App_checkBox_JokeOption.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_App_checkBox_JokeOption.MouseHover += new System.EventHandler(this.Config_App_checkBox_AllowExplicit_MouseHover);
             // 
             // Config_App_label_LangChanged
             // 
-            resources.ApplyResources(this.Config_App_label_LangChanged, "Config_App_label_LangChanged");
+            this.Config_App_label_LangChanged.AutoSize = true;
+            this.Config_App_label_LangChanged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Config_App_label_LangChanged.Location = new System.Drawing.Point(58, 71);
             this.Config_App_label_LangChanged.Name = "Config_App_label_LangChanged";
+            this.Config_App_label_LangChanged.Size = new System.Drawing.Size(374, 15);
+            this.Config_App_label_LangChanged.TabIndex = 5;
+            this.Config_App_label_LangChanged.Text = "For language changes to take effect, you need to restart this program.";
+            this.Config_App_label_LangChanged.Visible = false;
             // 
             // Config_App_linkLabel_LangChanged
             // 
             this.Config_App_linkLabel_LangChanged.ActiveLinkColor = System.Drawing.Color.DarkTurquoise;
-            resources.ApplyResources(this.Config_App_linkLabel_LangChanged, "Config_App_linkLabel_LangChanged");
+            this.Config_App_linkLabel_LangChanged.AutoSize = true;
+            this.Config_App_linkLabel_LangChanged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Config_App_linkLabel_LangChanged.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.Config_App_linkLabel_LangChanged.LinkColor = System.Drawing.SystemColors.Highlight;
+            this.Config_App_linkLabel_LangChanged.Location = new System.Drawing.Point(433, 71);
             this.Config_App_linkLabel_LangChanged.Name = "Config_App_linkLabel_LangChanged";
+            this.Config_App_linkLabel_LangChanged.Size = new System.Drawing.Size(78, 15);
+            this.Config_App_linkLabel_LangChanged.TabIndex = 4;
             this.Config_App_linkLabel_LangChanged.TabStop = true;
+            this.Config_App_linkLabel_LangChanged.Text = "Restart now.";
+            this.Config_App_linkLabel_LangChanged.Visible = false;
             this.Config_App_linkLabel_LangChanged.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Config_App_linkLabel_LangChanged_LinkClicked);
             // 
             // Config_App_checkBox_Dynamic
             // 
-            resources.ApplyResources(this.Config_App_checkBox_Dynamic, "Config_App_checkBox_Dynamic");
+            this.Config_App_checkBox_Dynamic.AutoSize = true;
             this.Config_App_checkBox_Dynamic.Checked = true;
             this.Config_App_checkBox_Dynamic.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Config_App_checkBox_Dynamic.Location = new System.Drawing.Point(208, 44);
             this.Config_App_checkBox_Dynamic.Name = "Config_App_checkBox_Dynamic";
+            this.Config_App_checkBox_Dynamic.Size = new System.Drawing.Size(134, 19);
+            this.Config_App_checkBox_Dynamic.TabIndex = 1;
+            this.Config_App_checkBox_Dynamic.Text = "Dynamic conversion";
             this.Config_App_checkBox_Dynamic.UseVisualStyleBackColor = true;
             this.Config_App_checkBox_Dynamic.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_App_checkBox_Dynamic.MouseHover += new System.EventHandler(this.Config_App_checkBox_Dynamic_MouseHover);
             // 
             // Config_App_label_Lang
             // 
-            resources.ApplyResources(this.Config_App_label_Lang, "Config_App_label_Lang");
+            this.Config_App_label_Lang.AutoSize = true;
+            this.Config_App_label_Lang.Location = new System.Drawing.Point(58, 26);
             this.Config_App_label_Lang.Name = "Config_App_label_Lang";
+            this.Config_App_label_Lang.Size = new System.Drawing.Size(62, 15);
+            this.Config_App_label_Lang.TabIndex = 0;
+            this.Config_App_label_Lang.Text = "Language:";
             // 
             // Config_App_comboBox_Lang
             // 
             this.Config_App_comboBox_Lang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Config_App_comboBox_Lang.FormattingEnabled = true;
             this.Config_App_comboBox_Lang.Items.AddRange(new object[] {
-            resources.GetString("Config_App_comboBox_Lang.Items"),
-            resources.GetString("Config_App_comboBox_Lang.Items1")});
-            resources.ApplyResources(this.Config_App_comboBox_Lang, "Config_App_comboBox_Lang");
+            "English (default)",
+            "Czech"});
+            this.Config_App_comboBox_Lang.Location = new System.Drawing.Point(59, 44);
             this.Config_App_comboBox_Lang.Name = "Config_App_comboBox_Lang";
+            this.Config_App_comboBox_Lang.Size = new System.Drawing.Size(120, 23);
+            this.Config_App_comboBox_Lang.TabIndex = 0;
             this.Config_App_comboBox_Lang.SelectionChangeCommitted += new System.EventHandler(this.Config_App_comboBox_Lang_SelectionChangeCommitted);
             this.Config_App_comboBox_Lang.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_App_comboBox_Lang.MouseHover += new System.EventHandler(this.Config_App_comboBox_Lang_MouseHover);
             // 
             // Config_groupBox_Player
             // 
-            this.Config_groupBox_Player.Controls.Add(this.pictureBox2);
+            this.Config_groupBox_Player.Controls.Add(this.Config_Player_pictureBox_Icon);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_CurrentFreq);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_CurrentSpeed);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_Freq);
@@ -573,40 +739,59 @@ namespace Morseapp_WinForms
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_Speed);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_checkBox_StrictTiming);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_trackBar_Speed);
-            resources.ApplyResources(this.Config_groupBox_Player, "Config_groupBox_Player");
+            this.Config_groupBox_Player.Location = new System.Drawing.Point(11, 207);
             this.Config_groupBox_Player.Name = "Config_groupBox_Player";
+            this.Config_groupBox_Player.Size = new System.Drawing.Size(555, 105);
+            this.Config_groupBox_Player.TabIndex = 0;
             this.Config_groupBox_Player.TabStop = false;
+            this.Config_groupBox_Player.Text = "Player settings";
             // 
-            // pictureBox2
+            // Config_Player_pictureBox_Icon
             // 
-            this.pictureBox2.Image = global::Morseapp_WinForms.Properties.Resources.player_40;
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.TabStop = false;
+            this.Config_Player_pictureBox_Icon.Image = global::Morseapp_WinForms.Properties.Resources.player_40;
+            this.Config_Player_pictureBox_Icon.Location = new System.Drawing.Point(6, 22);
+            this.Config_Player_pictureBox_Icon.Name = "Config_Player_pictureBox_Icon";
+            this.Config_Player_pictureBox_Icon.Size = new System.Drawing.Size(40, 40);
+            this.Config_Player_pictureBox_Icon.TabIndex = 0;
+            this.Config_Player_pictureBox_Icon.TabStop = false;
             // 
             // Config_Player_label_CurrentFreq
             // 
-            resources.ApplyResources(this.Config_Player_label_CurrentFreq, "Config_Player_label_CurrentFreq");
+            this.Config_Player_label_CurrentFreq.AutoSize = true;
+            this.Config_Player_label_CurrentFreq.Location = new System.Drawing.Point(357, 84);
             this.Config_Player_label_CurrentFreq.Name = "Config_Player_label_CurrentFreq";
+            this.Config_Player_label_CurrentFreq.Size = new System.Drawing.Size(70, 15);
+            this.Config_Player_label_CurrentFreq.TabIndex = 6;
+            this.Config_Player_label_CurrentFreq.Text = "CurrentFreq";
             // 
             // Config_Player_label_CurrentSpeed
             // 
-            resources.ApplyResources(this.Config_Player_label_CurrentSpeed, "Config_Player_label_CurrentSpeed");
+            this.Config_Player_label_CurrentSpeed.AutoSize = true;
+            this.Config_Player_label_CurrentSpeed.Location = new System.Drawing.Point(59, 84);
             this.Config_Player_label_CurrentSpeed.Name = "Config_Player_label_CurrentSpeed";
+            this.Config_Player_label_CurrentSpeed.Size = new System.Drawing.Size(79, 15);
+            this.Config_Player_label_CurrentSpeed.TabIndex = 5;
+            this.Config_Player_label_CurrentSpeed.Text = "CurrentSpeed";
             // 
             // Config_Player_label_Freq
             // 
-            resources.ApplyResources(this.Config_Player_label_Freq, "Config_Player_label_Freq");
+            this.Config_Player_label_Freq.AutoSize = true;
+            this.Config_Player_label_Freq.Location = new System.Drawing.Point(357, 23);
             this.Config_Player_label_Freq.Name = "Config_Player_label_Freq";
+            this.Config_Player_label_Freq.Size = new System.Drawing.Size(100, 15);
+            this.Config_Player_label_Freq.TabIndex = 4;
+            this.Config_Player_label_Freq.Text = "Sound frequency:";
             // 
             // Config_Player_trackBar_Freq
             // 
             this.Config_Player_trackBar_Freq.LargeChange = 250;
-            resources.ApplyResources(this.Config_Player_trackBar_Freq, "Config_Player_trackBar_Freq");
+            this.Config_Player_trackBar_Freq.Location = new System.Drawing.Point(356, 43);
             this.Config_Player_trackBar_Freq.Maximum = 1000;
             this.Config_Player_trackBar_Freq.Minimum = 100;
             this.Config_Player_trackBar_Freq.Name = "Config_Player_trackBar_Freq";
+            this.Config_Player_trackBar_Freq.Size = new System.Drawing.Size(110, 45);
             this.Config_Player_trackBar_Freq.SmallChange = 100;
+            this.Config_Player_trackBar_Freq.TabIndex = 3;
             this.Config_Player_trackBar_Freq.TickFrequency = 100;
             this.Config_Player_trackBar_Freq.Value = 500;
             this.Config_Player_trackBar_Freq.ValueChanged += new System.EventHandler(this.Config_Player_trackBar_Freq_ValueChanged);
@@ -615,13 +800,21 @@ namespace Morseapp_WinForms
             // 
             // Config_Player_label_Speed
             // 
-            resources.ApplyResources(this.Config_Player_label_Speed, "Config_Player_label_Speed");
+            this.Config_Player_label_Speed.AutoSize = true;
+            this.Config_Player_label_Speed.Location = new System.Drawing.Point(59, 25);
             this.Config_Player_label_Speed.Name = "Config_Player_label_Speed";
+            this.Config_Player_label_Speed.Size = new System.Drawing.Size(91, 15);
+            this.Config_Player_label_Speed.TabIndex = 2;
+            this.Config_Player_label_Speed.Text = "Playback speed:";
             // 
             // Config_Player_checkBox_StrictTiming
             // 
-            resources.ApplyResources(this.Config_Player_checkBox_StrictTiming, "Config_Player_checkBox_StrictTiming");
+            this.Config_Player_checkBox_StrictTiming.AutoSize = true;
+            this.Config_Player_checkBox_StrictTiming.Location = new System.Drawing.Point(208, 43);
             this.Config_Player_checkBox_StrictTiming.Name = "Config_Player_checkBox_StrictTiming";
+            this.Config_Player_checkBox_StrictTiming.Size = new System.Drawing.Size(91, 19);
+            this.Config_Player_checkBox_StrictTiming.TabIndex = 1;
+            this.Config_Player_checkBox_StrictTiming.Text = "Strict timing";
             this.Config_Player_checkBox_StrictTiming.UseVisualStyleBackColor = true;
             this.Config_Player_checkBox_StrictTiming.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
             this.Config_Player_checkBox_StrictTiming.MouseHover += new System.EventHandler(this.Config_Player_StrictTiming_MouseHover);
@@ -629,11 +822,13 @@ namespace Morseapp_WinForms
             // Config_Player_trackBar_Speed
             // 
             this.Config_Player_trackBar_Speed.LargeChange = 150;
-            resources.ApplyResources(this.Config_Player_trackBar_Speed, "Config_Player_trackBar_Speed");
+            this.Config_Player_trackBar_Speed.Location = new System.Drawing.Point(59, 43);
             this.Config_Player_trackBar_Speed.Maximum = 500;
             this.Config_Player_trackBar_Speed.Minimum = 50;
             this.Config_Player_trackBar_Speed.Name = "Config_Player_trackBar_Speed";
+            this.Config_Player_trackBar_Speed.Size = new System.Drawing.Size(110, 45);
             this.Config_Player_trackBar_Speed.SmallChange = 50;
+            this.Config_Player_trackBar_Speed.TabIndex = 0;
             this.Config_Player_trackBar_Speed.TickFrequency = 50;
             this.Config_Player_trackBar_Speed.Value = 250;
             this.Config_Player_trackBar_Speed.ValueChanged += new System.EventHandler(this.Config_Player_trackBar_Speed_ValueChanged);
@@ -646,19 +841,24 @@ namespace Morseapp_WinForms
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel,
             this.toolStripProgressBar});
-            resources.ApplyResources(this.statusStrip, "statusStrip");
+            this.statusStrip.Location = new System.Drawing.Point(0, 339);
             this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(584, 22);
             this.statusStrip.SizingGrip = false;
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip";
             // 
             // toolStripStatusLabel
             // 
-            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
+            this.toolStripStatusLabel.AutoSize = false;
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(480, 17);
+            this.toolStripStatusLabel.Text = "Hover over items for more details";
             // 
             // toolStripProgressBar
             // 
             this.toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
+            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
             this.toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolTip
@@ -676,12 +876,18 @@ namespace Morseapp_WinForms
             // 
             // Form_Main
             // 
-            resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tabControl_Main);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form_Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Morse Application";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
             this.tabControl_Main.ResumeLayout(false);
             this.Coder.ResumeLayout(false);
@@ -694,10 +900,10 @@ namespace Morseapp_WinForms
             this.Configuration.ResumeLayout(false);
             this.Config_groupBox_App.ResumeLayout(false);
             this.Config_groupBox_App.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Config_App_pictureBox_Icon)).EndInit();
             this.Config_groupBox_Player.ResumeLayout(false);
             this.Config_groupBox_Player.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Config_Player_pictureBox_Icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Config_Player_trackBar_Freq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Config_Player_trackBar_Speed)).EndInit();
             this.statusStrip.ResumeLayout(false);
@@ -757,14 +963,12 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.CheckBox Config_App_checkBox_JokeOption;
         private System.Windows.Forms.Button Coder_button_StopSound;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox Config_App_pictureBox_Icon;
+        private System.Windows.Forms.PictureBox Config_Player_pictureBox_Icon;
         private System.Windows.Forms.Button Decoder_button_Settings;
         private System.Windows.Forms.Button Player_button_Settings;
         private System.Windows.Forms.Button Player_button_StopSound;
         private System.Windows.Forms.Button Config_App_button_About;
-        private System.Windows.Forms.LinkLabel Config_App_linkLabel_GitHubPage;
-        private System.Windows.Forms.Label Config_App_label_GitHub;
         private System.Windows.Forms.Button Coder_button_Copy;
         private System.Windows.Forms.Button Decoder_button_Copy;
         private System.Windows.Forms.Button ShowDict_button_Copy;
