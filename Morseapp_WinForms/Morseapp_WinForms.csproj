@@ -15,7 +15,7 @@
     <PackageIcon>morseapp.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/petrmarak/Morseapp</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -49,7 +49,6 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Speech" Version="6.0.0-preview.6.21352.12" />
   </ItemGroup>
 
 </Project>

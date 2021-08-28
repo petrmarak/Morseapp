@@ -12,7 +12,7 @@ namespace Morseapp_WinForms
     public partial class Form_Main : Form
     {
         // *** System menu modifications: *** \\
-        // Learned from: https://stackoverflow.com/questions/4615940/how-can-i-customize-the-system-menu-of-a-windows-form
+        // Essentials learned from: https://stackoverflow.com/questions/4615940/how-can-i-customize-the-system-menu-of-a-windows-form
         // P/Invoke constants
         private const int WM_SYSCOMMAND = 0x112;
         private const int MF_STRING = 0x0;
@@ -39,9 +39,6 @@ namespace Morseapp_WinForms
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool DestroyMenu(IntPtr hMenu);
-
-        [DllImport("uxtheme.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
-        private static extern int SetWindowTheme(IntPtr HWND, string pszSubAppName, string pszSubIdList);
         
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool RegisterHotKey(IntPtr HWND, int id, int fsModifiers, Keys vk);
@@ -66,16 +63,16 @@ namespace Morseapp_WinForms
             IntPtr hSysMenu = GetSystemMenu(this.Handle, false);
 
             // Add the "Restart" menu item
-            AppendMenu(hSysMenu, MF_STRING, SYSMENU_APPRESTART_ID, SYSMENU_Restart);
+            AppendMenu(hSysMenu, MF_STRING, SYSMENU_APPRESTART_ID, GetLocStr("SYSMENU_Restart"));
 
             // Add a separator
             AppendMenu(hSysMenu, MF_SEPARATOR, SYSMENU_FIRSTSEPARATOR_ID, "");
 
             // Add the "Switch Visual Styles" menu item
-            AppendMenu(hSysMenu, MF_CHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, SYSMENU_EnableVisualStyles);
+            AppendMenu(hSysMenu, MF_CHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, GetLocStr("SYSMENU_EnableVisualStyles"));
 
             // Add the "About" menu item
-            AppendMenu(hSysMenu, MF_STRING, SYSMENU_ABOUT_ID, SYSMENU_About);
+            AppendMenu(hSysMenu, MF_STRING, SYSMENU_ABOUT_ID, GetLocStr("SYSMENU_About"));
 
             // Register ESC key as global hotkey
             RegisterHotKey(this.Handle, HOTKEY_ESC_ID, 0x0, Keys.Escape);
@@ -98,7 +95,7 @@ namespace Morseapp_WinForms
                 if (hasCheck)
                 {
                     RemoveMenu(hSysMenu, SYSMENU_ENABLEVISUALSTYLES_ID, MF_CHECKED);
-                    InsertMenu(hSysMenu, SYSMENU_ABOUT_ID, MF_UNCHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, SYSMENU_EnableVisualStyles);
+                    InsertMenu(hSysMenu, SYSMENU_ABOUT_ID, MF_UNCHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, GetLocStr("SYSMENU_EnableVisualStyles"));
                     DrawMenuBar(this.Handle);
                     hasCheck = false;
 
@@ -107,7 +104,7 @@ namespace Morseapp_WinForms
                 else
                 {
                     RemoveMenu(hSysMenu, SYSMENU_ENABLEVISUALSTYLES_ID, MF_UNCHECKED);
-                    InsertMenu(hSysMenu, SYSMENU_ABOUT_ID, MF_CHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, SYSMENU_EnableVisualStyles);
+                    InsertMenu(hSysMenu, SYSMENU_ABOUT_ID, MF_CHECKED, SYSMENU_ENABLEVISUALSTYLES_ID, GetLocStr("SYSMENU_EnableVisualStyles"));
                     DrawMenuBar(this.Handle);
                     hasCheck = true;
 
@@ -128,28 +125,20 @@ namespace Morseapp_WinForms
             }
         }
 
-        // *** Form_Main init: *** \\
         public Form_Main()
         {
             InitializeComponent();
 
-            // Init control settings
+            // Init control settings (when config file is not set yet):
             this.ActiveControl = Coder_textBox_Input;
-            this.toolStripStatusLabel.AutoSize = false;
-            this.Coder_textBox_Output.ReadOnly = true;
-            this.Coder_textBox_Output.BackColor = Color.WhiteSmoke;
-            this.Decoder_textBox_Output.ReadOnly = true;
-            this.Decoder_textBox_Output.BackColor = Color.WhiteSmoke;
             this.Config_App_comboBox_Lang.SelectedIndex = (int)Language.English;
-            this.Config_App_checkBox_Dynamic.Checked = true;
             this.Config_App_comboBox_Jokes.SelectedIndex = 0;
-            this.Config_Player_trackBar_Speed.Value = player_TimeUnit;
-            this.Config_Player_label_CurrentSpeed.Text = Convert.ToString(player_TimeUnit) + " ms";
-            this.Config_Player_checkBox_StrictTiming.Checked = false;
+            this.Config_Player_trackBar_Speed.Value = player_Speed;
+            this.Config_Player_label_CurrentSpeed.Text = $"{player_Speed} ms";
             this.Config_Player_trackBar_Freq.Value = player_Frequency;
-            this.Config_Player_label_CurrentFreq.Text = Convert.ToString(player_Frequency) + " Hz";
+            this.Config_Player_label_CurrentFreq.Text = $"{player_Frequency} Hz";
 
-            // multiple methods for one event are being removed when specified in Form_Main.Designer.cs
+            // Multiple methods for one event are removed when put in Form_Main.Designer.cs, so they are here:
             this.Coder_textBox_Input.TextChanged += new EventHandler(Common_textBox_TextChanged);
             this.Coder_textBox_Output.TextChanged += new EventHandler(Common_textBox_TextChanged);
             this.Decoder_textBox_Input.TextChanged += new EventHandler(Common_textBox_TextChanged);
@@ -157,78 +146,32 @@ namespace Morseapp_WinForms
             this.Player_textBox_Input.TextChanged += new EventHandler(Common_textBox_TextChanged);
             Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
 
-            // Load user-configurable settings from config.ini: \\
-            string configContent = File.ReadAllText(configFile);
-            int index;
-            string tempValue = "";
+            LoadConfig(configFile);
 
-            // Language
-            index = configContent.LastIndexOf("language=");
-            if (index != -1)
-            {
-                index += "language=".Length;
-                for (; char.IsNumber(configContent[index]); ++index)
-                {
-                    tempValue += configContent[index];
-                }
-            }
-#pragma warning disable CA1806 // Do not ignore method results
-            int.TryParse(tempValue, out int langID);
-#pragma warning restore CA1806 // Do not ignore method results
-            Config_App_comboBox_Lang.SelectedIndex = (int)SetLanguage(langID);
-            this.toolStripStatusLabel.Text = STATUS_Default;
-            tempValue = "";
-
-            // Checkboxes
-            if (configContent.Contains("dynamicConversion=") && configContent.Contains("strictTiming=") && configContent.Contains("allowExplicitJokes="))
-            {
-                Config_App_checkBox_Dynamic.Checked = configContent.Contains("dynamicConversion=True");
-                Config_App_checkBox_JokeOption.Checked = configContent.Contains("allowExplicitJokes=True");
-                Config_Player_checkBox_StrictTiming.Checked = configContent.Contains("strictTiming=True");
-            }
-
-            // Speed
-            index = configContent.LastIndexOf("speed=");
-            if (index != -1)
-            {
-                index += "speed=".Length;
-                while (char.IsNumber(configContent[index]))
-                {
-                    tempValue += configContent[index];
-                    ++index;
-                }
-                Config_Player_trackBar_Speed.Value = Convert.ToInt32(tempValue);
-            }
-            tempValue = "";
-
-            // Frequency
-            index = configContent.LastIndexOf("frequency=");
-            if (index != -1)
-            {
-                index += "frequency=".Length;
-                while (char.IsNumber(configContent[index]))
-                {
-                    tempValue += configContent[index];
-                    ++index;
-                }
-                Config_Player_trackBar_Freq.Value = Convert.ToInt32(tempValue);
-            }
-            tempValue = "";
+            toolTip.ToolTipTitle = GetLocStr("TIP_Title");
+            toolTip.SetToolTip(Coder_label_Tip, GetLocStr("TIP_Coder_Caption"));
+            toolTip.SetToolTip(Coder_button_Settings, GetLocStr("TIP_Button_Config"));
+            toolTip.SetToolTip(Decoder_label_Tip, GetLocStr("TIP_Decoder_Caption"));
+            toolTip.SetToolTip(Decoder_button_Settings, GetLocStr("TIP_Button_Config"));
+            toolTip.SetToolTip(Player_label_Tip, GetLocStr("TIP_Player_Caption"));
+            toolTip.SetToolTip(Player_button_Settings, GetLocStr("TIP_Button_Config"));
+            this.toolStripStatusLabel.Text = GetLocStr("STATUS_Default");
         }
-
-
 
         // *** 0) Common logic: *** \\
         private const string configFile = "config.ini";
-        private int player_TimeUnit = 250;
+        public static int langID;
+        private int jokesID;
+        private int player_Speed = 250;
         private int player_Frequency = 500;
-        private bool stopPlaying = default;
+        private static bool stopPlaying = default;
 
         private void ShowAboutWindow()
         {
-            //MessageBox.Show(MESSAGEBOX_About_Text, MESSAGEBOX_About_Title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form_About fa = new();
-            fa.ShowDialog();
+            using (Form_About fa = new())
+            {
+                fa.ShowDialog();
+            }
         }
 
         private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -238,7 +181,7 @@ namespace Morseapp_WinForms
 
         private void Application_ApplicationExit(object sender, EventArgs e)
         {
-            GenerateConfigFile(configFile);
+            SaveConfig(configFile);
         }
 
         private void Common_textBox_TextChanged(object sender, EventArgs e)    // universal dynamic resizing for text boxes
@@ -270,13 +213,13 @@ namespace Morseapp_WinForms
 
         private void Common_MouseLeave(object sender, EventArgs e)    // resets status label after mouse leaves any control
         {
-            toolStripStatusLabel.Text = STATUS_Default;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Default");
         }
 
         private void Button_PlaySound_Click(object sender, EventArgs e)
         {
             stopPlaying = false;
-            toolStripStatusLabel.Text = STATUS_Player_PlaySound_Invoked;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Player_PlaySound_Invoked");
             Cursor.Current = Cursors.AppStarting;
             toolStripProgressBar.Step = 1;
             if (tabControl_Main.SelectedTab == Coder)
@@ -289,15 +232,15 @@ namespace Morseapp_WinForms
 
                 foreach (char symbol in Coder_textBox_Output.Text)
                 {
+                    // user can press Esc key or click the Stop button
                     if (stopPlaying)
                         break;
 
                     toolStripProgressBar.PerformStep();
-                    toolStripStatusLabel.Text = STATUS_Player_PlaySound_Invoked;
-                    Morse.Player(symbol, player_Frequency, player_TimeUnit, Config_Player_checkBox_StrictTiming.Checked);
+                    toolStripStatusLabel.Text = GetLocStr("STATUS_Player_PlaySound_Invoked");
+                    Morse.Player(symbol, player_Frequency, player_Speed, Config_Player_checkBox_StrictTiming.Checked);
                     // Running the Morse.Player method on another thread completely breaks functionality and the sound - any tips about this are appreciated.
-                    // I have no experience with async/await and async methods beyond using Task.Run yet, so I'm not sure if that would be the solution here.
-                    //Task.Run(() => Morse.Player(symbol, player_Frequency, player_TimeUnit, Config_Player_checkBox_StrictTiming.Checked));
+                    //Task.Run(() => Morse.Player(symbol, player_Frequency, player_Speed, Config_Player_checkBox_StrictTiming.Checked));
                     Coder_textBox_Output.Select();
                     ++Coder_textBox_Output.SelectionStart;
 
@@ -321,8 +264,8 @@ namespace Morseapp_WinForms
                         break;
 
                     toolStripProgressBar.PerformStep();
-                    toolStripStatusLabel.Text = STATUS_Player_PlaySound_Invoked;
-                    Morse.Player(symbol, player_Frequency, player_TimeUnit, Config_Player_checkBox_StrictTiming.Checked);
+                    toolStripStatusLabel.Text = GetLocStr("STATUS_Player_PlaySound_Invoked");
+                    Morse.Player(symbol, player_Frequency, player_Speed, Config_Player_checkBox_StrictTiming.Checked);
                     Player_textBox_Input.Select();
                     ++Player_textBox_Input.SelectionStart;
 
@@ -336,14 +279,14 @@ namespace Morseapp_WinForms
             if (!toolStripProgressBar.IsDisposed) 
                 toolStripProgressBar.Value = toolStripProgressBar.Minimum;
 
-            toolStripStatusLabel.Text = STATUS_Default;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Default");
             Cursor.Current = Cursors.Default;
             stopPlaying = false;
         }
 
         private void Button_StopSound_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Player_StopSound;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Player_StopSound");
         }
 
         private void TabControl_Main_SelectedIndexChanged(object sender, EventArgs e)   // sets appropriate focus when switching tabs
@@ -371,7 +314,7 @@ namespace Morseapp_WinForms
         // *** 1) Coder tab logic: *** \\
         private void Coder_textBox_Input_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Coder_Input;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Coder_Input");
         }
 
         private void Coder_textBox_Input_TextChanged(object sender, EventArgs e)
@@ -393,20 +336,20 @@ namespace Morseapp_WinForms
         private void Coder_button_Joke_Click(object sender, EventArgs e)
         {
             Coder_textBox_Input.ResetText();
-            toolStripStatusLabel.Text = STATUS_Coder_Joke_Invoked;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Coder_Joke_Invoked");
             Cursor.Current = Cursors.WaitCursor;
 
             int jokesSource = Config_App_comboBox_Jokes.SelectedIndex;
-            bool option = Config_App_checkBox_JokeOption.Checked;
+            bool option = Config_App_checkBox_JokesOption.Checked;
             Coder_textBox_Input.Text = Task.Run(() => GetJoke(jokesSource, option)).Result;
 
             Cursor.Current = Cursors.Default;
-            toolStripStatusLabel.Text = STATUS_Default;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Default");
         }
 
         private void Coder_button_Joke_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Coder_Joke_Hover;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Coder_Joke_Hover");
         }
 
         private void Coder_button_Convert_Click(object sender, EventArgs e)
@@ -416,12 +359,12 @@ namespace Morseapp_WinForms
 
         private void Coder_button_Convert_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Coder_Convert;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Coder_Convert");
         }
 
         private void Coder_textBox_Output_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Coder_Output;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Coder_Output");
         }
 
         private void Coder_textBox_Output_TextChanged(object sender, EventArgs e)
@@ -448,29 +391,22 @@ namespace Morseapp_WinForms
         {
             Coder_textBox_Output.SelectAll();
             Coder_textBox_Output.Copy();
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Click_Button_Copy");
         }
 
         private void Coder_button_Copy_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Button_Copy;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Button_Copy");
         }
 
         private void Coder_button_PlaySound_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Player_PlaySound_Hover;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Player_PlaySound_Hover");
         }
 
         private void Coder_button_StopSound_Click(object sender, EventArgs e)
         {
             stopPlaying = true;
-        }
-
-        private void Coder_label_Tip_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.ToolTipIcon = ToolTipIcon.None;
-            toolTip.UseFading = true;
-            toolTip.ToolTipTitle = STATUS_Coder_Tip_Title;
-            toolTip.SetToolTip(Coder_label_Tip, STATUS_Coder_Tip_Caption);
         }
 
         private void Coder_button_Settings_Click(object sender, EventArgs e)
@@ -484,7 +420,7 @@ namespace Morseapp_WinForms
         // *** 2) Decoder tab logic: *** \\
         private void Decoder_textBox_Input_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Decoder_Input;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Decoder_Input");
         }
 
         private void Decoder_textBox_Input_TextChanged(object sender, EventArgs e)
@@ -514,12 +450,12 @@ namespace Morseapp_WinForms
 
         private void Decoder_button_Convert_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Decoder_Convert;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Decoder_Convert");
         }
 
         private void Decoder_textBox_Output_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Decoder_Output;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Decoder_Output");
         }
 
         private void Decoder_textBox_Output_KeyDown(object sender, KeyEventArgs e)
@@ -540,19 +476,12 @@ namespace Morseapp_WinForms
         {
             Decoder_textBox_Output.SelectAll();
             Decoder_textBox_Output.Copy();
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Click_Button_Copy");
         }
 
         private void Decoder_button_Copy_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Button_Copy;
-        }
-
-        private void Decoder_label_Tip_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.ToolTipIcon = ToolTipIcon.None;
-            toolTip.UseFading = true;
-            toolTip.ToolTipTitle = STATUS_Decoder_Tip_Title;
-            toolTip.SetToolTip(Decoder_label_Tip, STATUS_Decoder_Tip_Caption);
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Button_Copy");
         }
 
         private void Decoder_button_Settings_Click(object sender, EventArgs e)
@@ -566,7 +495,7 @@ namespace Morseapp_WinForms
         // *** Player tab logic: *** \\
         private void Player_textBox_Input_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Player_Input;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Player_Input");
         }
 
         private void Player_textBox_Input_KeyDown(object sender, KeyEventArgs e)
@@ -579,7 +508,7 @@ namespace Morseapp_WinForms
 
         private void Player_button_Play_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Player_PlaySound_Hover;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Player_PlaySound_Hover");
         }
 
         private void Player_button_StopSound_Click(object sender, EventArgs e)
@@ -603,7 +532,7 @@ namespace Morseapp_WinForms
 
         private void ShowDict_richtextBox_Output_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Dictionary_RichTextBox;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Dictionary_RichTextBox");
         }
 
         private void ShowDict_button_Copy_Click(object sender, EventArgs e)
@@ -611,11 +540,12 @@ namespace Morseapp_WinForms
             ShowDict_richtextBox_Output.SelectAll();
             ShowDict_richtextBox_Output.Copy();
             ShowDict_richtextBox_Output.DeselectAll();
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Click_Button_Copy");
         }
 
         private void ShowDict_button_Copy_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Button_Copy;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Button_Copy");
         }
 
         private void ShowDict_button_Refresh_Click(object sender, EventArgs e)
@@ -640,17 +570,56 @@ namespace Morseapp_WinForms
 
         private void Config_App_comboBox_Lang_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_App_Lang;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_Lang");
         }
 
         private void Config_App_checkBox_Dynamic_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_App_Dynamic;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_Dynamic");
         }
 
-        private void Config_App_checkBox_AllowExplicit_MouseHover(object sender, EventArgs e)
+        private void Config_App_comboBox_Jokes_SelectedValueChanged(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_App_Explicit;
+            if (Config_App_comboBox_Jokes.SelectedIndex == 2)
+                Config_App_checkBox_JokesOption.Text = GetLocStr("Config_App_ProgrammingJokes");
+            else
+                Config_App_checkBox_JokesOption.Text = GetLocStr("Config_App_ExplicitJokes");
+        }
+
+        private void Config_App_comboBox_Jokes_MouseHover(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_Jokes");
+        }
+
+        private void Config_App_checkBox_JokesOption_MouseHover(object sender, EventArgs e)
+        {
+            if (Config_App_comboBox_Jokes.SelectedIndex == 2)
+                toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_ProgrammingJokes");
+            else
+                toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_ExplicitJokes");
+        }
+
+        private void Config_App_button_Updates_Click(object sender, EventArgs e)
+        {
+            using (Form_Updates fu = new())
+            {
+                fu.CheckForUpdates(this);
+            }
+        }
+
+        private void Config_App_button_Updates_MouseHover(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_Updates");
+        }
+
+        private void Config_App_button_About_Click(object sender, EventArgs e)
+        {
+            ShowAboutWindow();
+        }
+
+        private void Config_App_button_About_MouseHover(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_App_About");
         }
 
         private void Config_Player_trackBar_Speed_ValueChanged(object sender, EventArgs e)
@@ -660,13 +629,13 @@ namespace Morseapp_WinForms
             {
                 Config_Player_trackBar_Speed.Value += 50 - mod;
             }
-            player_TimeUnit = Config_Player_trackBar_Speed.Value;
+            player_Speed = Config_Player_trackBar_Speed.Value;
             Config_Player_label_CurrentSpeed.Text = Convert.ToString(Config_Player_trackBar_Speed.Value) + " ms";
         }
 
         private void Config_Player_trackBar_Speed_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_Player_Speed;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_Player_Speed");
         }
 
         private void Config_Player_trackBar_Freq_ValueChanged(object sender, EventArgs e)
@@ -682,67 +651,17 @@ namespace Morseapp_WinForms
 
         private void Config_Player_trackBar_Freq_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_Player_Freq;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_Player_Freq");
         }
 
         private void Config_Player_StrictTiming_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Config_Player_StrictTiming;
-        }
-
-        private void Config_App_button_Updates_Click(object sender, EventArgs e)
-        {
-            this.UseWaitCursor = true;
-            CheckForUpdates();
-            this.UseWaitCursor = false;
-        }
-
-        private void Config_App_button_About_Click(object sender, EventArgs e)
-        {
-            ShowAboutWindow();
-        }
-
-        private void Config_App_linkLabel_GitHubPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/petrmarak/Morseapp");
-        }
-
-        private void Config_App_linkLabel_GitHubPage_MouseHover(object sender, EventArgs e)
-        {
-            toolStripStatusLabel.Text = STATUS_Config_App_GitHub_Link;
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Config_Player_StrictTiming");
         }
 
         private void ShowDict_button_Refresh_MouseHover(object sender, EventArgs e)
         {
-            toolStripStatusLabel.Text = STATUS_Dictionary_Refresh;
-        }
-
-        private void Config_App_comboBox_Jokes_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (Config_App_comboBox_Jokes.SelectedIndex == 2)
-                Config_App_checkBox_JokeOption.Text = "Only programming jokes";
-            else
-                Config_App_checkBox_JokeOption.Text = "Allow explicit jokes";
-        }
-
-        private void Coder_button_while_Click(object sender, EventArgs e)
-        {
-            stopPlaying = false;
-            while(!Coder_textBox_Output.Text.Contains("Error") && !stopPlaying)
-            {
-                toolStripStatusLabel.Text = "Testing GetJoke() for returning incorrectly-formatted jokes...";
-                int jokesSource = Config_App_comboBox_Jokes.SelectedIndex;
-                bool option = Config_App_checkBox_JokeOption.Checked;
-                Coder_textBox_Input.Text = Task.Run(() => GetJoke(jokesSource, option)).Result;
-                Application.DoEvents();
-            }
-            /*
-            * My wife and I have reached the difficult decision that we do not want children.If anybody does, please just send me your contact details and we can drop them off tomorrow.
-            * What do Santa's little helpers learn at school?The elf-abet!
-            * Eight bytes walk into a bar.The bartender asks, "Can I get you anything?""Yeah," reply the bytes."Make us a double."
-            * "Honey, go to the store and buy some eggs.""OK.""Oh and while you're there, get some milk."He never returned.
-            * 
-            */
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Dictionary_Refresh");
         }
     }
 }

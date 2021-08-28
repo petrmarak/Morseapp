@@ -9,48 +9,49 @@ namespace Morseapp_WinForms
         public Form_Updates()
         {
             InitializeComponent();
-            this.Text = $"{Application.ProductName} Update Tool, v{Application.ProductVersion}";
         }
 
         private void Form_Updates_Load(object sender, EventArgs e)
         {
-            label_Title.Text = $"A new update is available: version {upToDateVersion}";
-            label_Changelog.Text = changeLog;
+            SetLanguage(Form_Main.langID);
 
             using (SoundPlayer soundPlayer = new(Properties.Resources.Windows_Balloon))
             {
                 soundPlayer.Play();
             }
+
+            label_Changelog.Text = changeLog;
         }
 
-        public enum UpdateButton : ushort
+        public enum UpdateButton : byte
         {
             Cancel, 
             Dependent, 
             Standalone
         }
 
-        public static ushort buttonClicked;
-        public static string upToDateVersion;
-        public static string changeLog;
+        private byte buttonClicked;
+        private string upToDateVersion;
+        private string changeLog;
+        private float dependentSize;
+        private float standaloneSize;
 
-        private void button_Dependent_Click(object sender, EventArgs e)
+        private void Button_Dependent_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)UpdateButton.Dependent;
+            buttonClicked = (byte)UpdateButton.Dependent;
             this.Close();
         }
 
-        private void button_Standalone_Click(object sender, EventArgs e)
+        private void Button_Standalone_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)UpdateButton.Standalone;
+            buttonClicked = (byte)UpdateButton.Standalone;
             this.Close();
         }
 
-        private void button_Cancel_Click(object sender, EventArgs e)
+        private void Button_Cancel_Click(object sender, EventArgs e)
         {
-            buttonClicked = (ushort)UpdateButton.Cancel;
+            buttonClicked = (byte)UpdateButton.Cancel;
             this.Close();
-        }
-
+        }        
     }
 }

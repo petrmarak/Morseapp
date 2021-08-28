@@ -63,6 +63,16 @@ namespace Morseapp_WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap about_48 {
+            get {
+                object obj = ResourceManager.GetObject("about_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap app_settings_40 {
             get {
                 object obj = ResourceManager.GetObject("app_settings_40", resourceCulture);
@@ -93,29 +103,9 @@ namespace Morseapp_WinForms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap info_40 {
-            get {
-                object obj = ResourceManager.GetObject("info_40", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap memory_40 {
             get {
                 object obj = ResourceManager.GetObject("memory_40", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap morse_code {
-            get {
-                object obj = ResourceManager.GetObject("morse_code", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -127,6 +117,16 @@ namespace Morseapp_WinForms.Properties {
             get {
                 object obj = ResourceManager.GetObject("morse_code_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap morseapp_48 {
+            get {
+                object obj = ResourceManager.GetObject("morseapp_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -156,6 +156,16 @@ namespace Morseapp_WinForms.Properties {
         internal static System.Drawing.Bitmap settings_40 {
             get {
                 object obj = ResourceManager.GetObject("settings_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap updater_48 {
+            get {
+                object obj = ResourceManager.GetObject("updater_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

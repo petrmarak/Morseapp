@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -241,7 +240,6 @@ namespace Morseapp_WinForms
             return "Success.";
         }
 
-
         /// <summary>
         /// Method that returns morseList as table-formatted string.
         /// </summary>
@@ -249,7 +247,7 @@ namespace Morseapp_WinForms
         {
             string table = "";
             table += $"ASCII\tMorse\t\tASCII\tMorse\t\tASCII\tMorse\t\tASCII\tMorse{Environment.NewLine}";
-            ushort counter = 0;
+            byte counter = 0;
 
             foreach (var item in morseList)
             {

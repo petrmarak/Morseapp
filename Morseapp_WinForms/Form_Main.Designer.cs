@@ -33,7 +33,6 @@ namespace Morseapp_WinForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.Coder = new System.Windows.Forms.TabPage();
-            this.Coder_button_while = new System.Windows.Forms.Button();
             this.Coder_button_Copy = new System.Windows.Forms.Button();
             this.Coder_button_StopSound = new System.Windows.Forms.Button();
             this.Coder_button_Joke = new System.Windows.Forms.Button();
@@ -72,7 +71,7 @@ namespace Morseapp_WinForms
             this.Config_App_comboBox_Jokes = new System.Windows.Forms.ComboBox();
             this.Config_App_button_About = new System.Windows.Forms.Button();
             this.Config_App_pictureBox_Icon = new System.Windows.Forms.PictureBox();
-            this.Config_App_checkBox_JokeOption = new System.Windows.Forms.CheckBox();
+            this.Config_App_checkBox_JokesOption = new System.Windows.Forms.CheckBox();
             this.Config_App_label_LangChanged = new System.Windows.Forms.Label();
             this.Config_App_linkLabel_LangChanged = new System.Windows.Forms.LinkLabel();
             this.Config_App_checkBox_Dynamic = new System.Windows.Forms.CheckBox();
@@ -129,7 +128,6 @@ namespace Morseapp_WinForms
             // Coder
             // 
             this.Coder.AllowDrop = true;
-            this.Coder.Controls.Add(this.Coder_button_while);
             this.Coder.Controls.Add(this.Coder_button_Copy);
             this.Coder.Controls.Add(this.Coder_button_StopSound);
             this.Coder.Controls.Add(this.Coder_button_Joke);
@@ -149,18 +147,9 @@ namespace Morseapp_WinForms
             this.Coder.Text = "Coder";
             this.Coder.UseVisualStyleBackColor = true;
             // 
-            // Coder_button_while
-            // 
-            this.Coder_button_while.Location = new System.Drawing.Point(113, 84);
-            this.Coder_button_while.Name = "Coder_button_while";
-            this.Coder_button_while.Size = new System.Drawing.Size(75, 23);
-            this.Coder_button_while.TabIndex = 11;
-            this.Coder_button_while.Text = "while()";
-            this.Coder_button_while.UseVisualStyleBackColor = true;
-            this.Coder_button_while.Click += new System.EventHandler(this.Coder_button_while_Click);
-            // 
             // Coder_button_Copy
             // 
+            this.Coder_button_Copy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Coder_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Coder_button_Copy.Location = new System.Drawing.Point(24, 197);
@@ -176,6 +165,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_button_StopSound
             // 
+            this.Coder_button_StopSound.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_button_StopSound.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Coder_button_StopSound.Location = new System.Drawing.Point(138, 244);
             this.Coder_button_StopSound.Name = "Coder_button_StopSound";
@@ -190,7 +180,8 @@ namespace Morseapp_WinForms
             // 
             // Coder_button_Joke
             // 
-            this.Coder_button_Joke.Location = new System.Drawing.Point(25, 89);
+            this.Coder_button_Joke.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Coder_button_Joke.Location = new System.Drawing.Point(24, 86);
             this.Coder_button_Joke.Name = "Coder_button_Joke";
             this.Coder_button_Joke.Size = new System.Drawing.Size(75, 25);
             this.Coder_button_Joke.TabIndex = 8;
@@ -202,6 +193,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_button_Settings
             // 
+            this.Coder_button_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Coder_button_Settings.BackColor = System.Drawing.Color.Transparent;
             this.Coder_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Coder_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
@@ -212,13 +204,12 @@ namespace Morseapp_WinForms
             this.Coder_button_Settings.Name = "Coder_button_Settings";
             this.Coder_button_Settings.Size = new System.Drawing.Size(27, 27);
             this.Coder_button_Settings.TabIndex = 7;
-            this.toolTip.SetToolTip(this.Coder_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
-        "d dynamically.");
             this.Coder_button_Settings.UseVisualStyleBackColor = true;
             this.Coder_button_Settings.Click += new System.EventHandler(this.Coder_button_Settings_Click);
             // 
             // Coder_button_PlaySound
             // 
+            this.Coder_button_PlaySound.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_button_PlaySound.Location = new System.Drawing.Point(113, 208);
             this.Coder_button_PlaySound.Name = "Coder_button_PlaySound";
             this.Coder_button_PlaySound.Size = new System.Drawing.Size(75, 30);
@@ -232,9 +223,12 @@ namespace Morseapp_WinForms
             // 
             // Coder_textBox_Output
             // 
+            this.Coder_textBox_Output.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Coder_textBox_Output.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Coder_textBox_Output.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Coder_textBox_Output.Location = new System.Drawing.Point(25, 173);
             this.Coder_textBox_Output.Name = "Coder_textBox_Output";
+            this.Coder_textBox_Output.ReadOnly = true;
             this.Coder_textBox_Output.Size = new System.Drawing.Size(250, 23);
             this.Coder_textBox_Output.TabIndex = 4;
             this.Coder_textBox_Output.TextChanged += new System.EventHandler(this.Coder_textBox_Output_TextChanged);
@@ -244,6 +238,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_label_Output
             // 
+            this.Coder_label_Output.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_label_Output.AutoSize = true;
             this.Coder_label_Output.Location = new System.Drawing.Point(25, 155);
             this.Coder_label_Output.Name = "Coder_label_Output";
@@ -253,6 +248,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_label_Input
             // 
+            this.Coder_label_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_label_Input.AutoSize = true;
             this.Coder_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Coder_label_Input.Name = "Coder_label_Input";
@@ -262,6 +258,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_textBox_Input
             // 
+            this.Coder_textBox_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Coder_textBox_Input.Name = "Coder_textBox_Input";
             this.Coder_textBox_Input.Size = new System.Drawing.Size(250, 23);
@@ -273,6 +270,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_button_Convert
             // 
+            this.Coder_button_Convert.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Coder_button_Convert.Location = new System.Drawing.Point(113, 113);
             this.Coder_button_Convert.Name = "Coder_button_Convert";
             this.Coder_button_Convert.Size = new System.Drawing.Size(75, 30);
@@ -285,6 +283,7 @@ namespace Morseapp_WinForms
             // 
             // Coder_label_Tip
             // 
+            this.Coder_label_Tip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Coder_label_Tip.AutoSize = true;
             this.Coder_label_Tip.BackColor = System.Drawing.Color.Transparent;
             this.Coder_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -298,7 +297,6 @@ namespace Morseapp_WinForms
             this.Coder_label_Tip.TabIndex = 5;
             this.Coder_label_Tip.Text = "SOS → ... --- ...";
             this.Coder_label_Tip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Coder_label_Tip.MouseHover += new System.EventHandler(this.Coder_label_Tip_MouseHover);
             // 
             // Decoder
             // 
@@ -320,6 +318,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_button_Copy
             // 
+            this.Decoder_button_Copy.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Decoder_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.Decoder_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Decoder_button_Copy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -336,6 +335,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_button_Settings
             // 
+            this.Decoder_button_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Decoder_button_Settings.BackColor = System.Drawing.Color.Transparent;
             this.Decoder_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Decoder_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
@@ -346,13 +346,12 @@ namespace Morseapp_WinForms
             this.Decoder_button_Settings.Name = "Decoder_button_Settings";
             this.Decoder_button_Settings.Size = new System.Drawing.Size(27, 27);
             this.Decoder_button_Settings.TabIndex = 11;
-            this.toolTip.SetToolTip(this.Decoder_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
-        "d dynamically.");
             this.Decoder_button_Settings.UseVisualStyleBackColor = true;
             this.Decoder_button_Settings.Click += new System.EventHandler(this.Decoder_button_Settings_Click);
             // 
             // Decoder_label_Tip
             // 
+            this.Decoder_label_Tip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Decoder_label_Tip.AutoSize = true;
             this.Decoder_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Decoder_label_Tip.Cursor = System.Windows.Forms.Cursors.Help;
@@ -364,12 +363,14 @@ namespace Morseapp_WinForms
             this.Decoder_label_Tip.TabIndex = 10;
             this.Decoder_label_Tip.Text = "... --- ... → SOS";
             this.Decoder_label_Tip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Decoder_label_Tip.MouseHover += new System.EventHandler(this.Decoder_label_Tip_MouseHover);
             // 
             // Decoder_textBox_Output
             // 
+            this.Decoder_textBox_Output.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Decoder_textBox_Output.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Decoder_textBox_Output.Location = new System.Drawing.Point(25, 173);
             this.Decoder_textBox_Output.Name = "Decoder_textBox_Output";
+            this.Decoder_textBox_Output.ReadOnly = true;
             this.Decoder_textBox_Output.Size = new System.Drawing.Size(250, 23);
             this.Decoder_textBox_Output.TabIndex = 9;
             this.Decoder_textBox_Output.TextChanged += new System.EventHandler(this.Decoder_textBox_Output_TextChanged);
@@ -379,6 +380,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_label_Output
             // 
+            this.Decoder_label_Output.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Decoder_label_Output.AutoSize = true;
             this.Decoder_label_Output.Location = new System.Drawing.Point(25, 155);
             this.Decoder_label_Output.Name = "Decoder_label_Output";
@@ -388,6 +390,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_label_Input
             // 
+            this.Decoder_label_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Decoder_label_Input.AutoSize = true;
             this.Decoder_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Decoder_label_Input.Name = "Decoder_label_Input";
@@ -397,6 +400,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_textBox_Input
             // 
+            this.Decoder_textBox_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Decoder_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Decoder_textBox_Input.Name = "Decoder_textBox_Input";
             this.Decoder_textBox_Input.Size = new System.Drawing.Size(250, 23);
@@ -408,6 +412,7 @@ namespace Morseapp_WinForms
             // 
             // Decoder_button_Convert
             // 
+            this.Decoder_button_Convert.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Decoder_button_Convert.Location = new System.Drawing.Point(113, 113);
             this.Decoder_button_Convert.Name = "Decoder_button_Convert";
             this.Decoder_button_Convert.Size = new System.Drawing.Size(75, 30);
@@ -435,6 +440,7 @@ namespace Morseapp_WinForms
             // 
             // Player_button_StopSound
             // 
+            this.Player_button_StopSound.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Player_button_StopSound.Location = new System.Drawing.Point(138, 149);
             this.Player_button_StopSound.Name = "Player_button_StopSound";
             this.Player_button_StopSound.Size = new System.Drawing.Size(25, 25);
@@ -448,6 +454,7 @@ namespace Morseapp_WinForms
             // 
             // Player_button_Settings
             // 
+            this.Player_button_Settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Player_button_Settings.BackColor = System.Drawing.Color.Transparent;
             this.Player_button_Settings.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Player_button_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
@@ -458,13 +465,12 @@ namespace Morseapp_WinForms
             this.Player_button_Settings.Name = "Player_button_Settings";
             this.Player_button_Settings.Size = new System.Drawing.Size(27, 27);
             this.Player_button_Settings.TabIndex = 12;
-            this.toolTip.SetToolTip(this.Player_button_Settings, "Change settings such as language, speed of playback or if text should be converte" +
-        "d dynamically.");
             this.Player_button_Settings.UseVisualStyleBackColor = true;
             this.Player_button_Settings.Click += new System.EventHandler(this.Player_button_Settings_Click);
             // 
             // Player_label_Tip
             // 
+            this.Player_label_Tip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Player_label_Tip.AutoSize = true;
             this.Player_label_Tip.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Player_label_Tip.Cursor = System.Windows.Forms.Cursors.Help;
@@ -479,6 +485,7 @@ namespace Morseapp_WinForms
             // 
             // Player_button_Play
             // 
+            this.Player_button_Play.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Player_button_Play.Location = new System.Drawing.Point(113, 113);
             this.Player_button_Play.Name = "Player_button_Play";
             this.Player_button_Play.Size = new System.Drawing.Size(75, 30);
@@ -491,6 +498,7 @@ namespace Morseapp_WinForms
             // 
             // Player_label_Input
             // 
+            this.Player_label_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Player_label_Input.AutoSize = true;
             this.Player_label_Input.Location = new System.Drawing.Point(25, 42);
             this.Player_label_Input.Name = "Player_label_Input";
@@ -500,6 +508,7 @@ namespace Morseapp_WinForms
             // 
             // Player_textBox_Input
             // 
+            this.Player_textBox_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Player_textBox_Input.Location = new System.Drawing.Point(25, 60);
             this.Player_textBox_Input.Name = "Player_textBox_Input";
             this.Player_textBox_Input.Size = new System.Drawing.Size(250, 23);
@@ -523,6 +532,7 @@ namespace Morseapp_WinForms
             // 
             // ShowDict_button_Copy
             // 
+            this.ShowDict_button_Copy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowDict_button_Copy.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ShowDict_button_Copy.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ShowDict_button_Copy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -538,6 +548,7 @@ namespace Morseapp_WinForms
             // 
             // ShowDict_button_Refresh
             // 
+            this.ShowDict_button_Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowDict_button_Refresh.Location = new System.Drawing.Point(547, 288);
             this.ShowDict_button_Refresh.Name = "ShowDict_button_Refresh";
             this.ShowDict_button_Refresh.Size = new System.Drawing.Size(25, 25);
@@ -575,12 +586,13 @@ namespace Morseapp_WinForms
             // 
             // Config_groupBox_App
             // 
+            this.Config_groupBox_App.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Config_groupBox_App.Controls.Add(this.Config_App_button_Updates);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_Jokes);
             this.Config_groupBox_App.Controls.Add(this.Config_App_comboBox_Jokes);
             this.Config_groupBox_App.Controls.Add(this.Config_App_button_About);
             this.Config_groupBox_App.Controls.Add(this.Config_App_pictureBox_Icon);
-            this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_JokeOption);
+            this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_JokesOption);
             this.Config_groupBox_App.Controls.Add(this.Config_App_label_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_linkLabel_LangChanged);
             this.Config_groupBox_App.Controls.Add(this.Config_App_checkBox_Dynamic);
@@ -603,6 +615,8 @@ namespace Morseapp_WinForms
             this.Config_App_button_Updates.Text = "Check for updates";
             this.Config_App_button_Updates.UseVisualStyleBackColor = true;
             this.Config_App_button_Updates.Click += new System.EventHandler(this.Config_App_button_Updates_Click);
+            this.Config_App_button_Updates.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
+            this.Config_App_button_Updates.MouseHover += new System.EventHandler(this.Config_App_button_Updates_MouseHover);
             // 
             // Config_App_label_Jokes
             // 
@@ -626,6 +640,8 @@ namespace Morseapp_WinForms
             this.Config_App_comboBox_Jokes.Size = new System.Drawing.Size(121, 23);
             this.Config_App_comboBox_Jokes.TabIndex = 0;
             this.Config_App_comboBox_Jokes.SelectedValueChanged += new System.EventHandler(this.Config_App_comboBox_Jokes_SelectedValueChanged);
+            this.Config_App_comboBox_Jokes.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
+            this.Config_App_comboBox_Jokes.MouseHover += new System.EventHandler(this.Config_App_comboBox_Jokes_MouseHover);
             // 
             // Config_App_button_About
             // 
@@ -642,6 +658,8 @@ namespace Morseapp_WinForms
             this.Config_App_button_About.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Config_App_button_About.UseVisualStyleBackColor = true;
             this.Config_App_button_About.Click += new System.EventHandler(this.Config_App_button_About_Click);
+            this.Config_App_button_About.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
+            this.Config_App_button_About.MouseHover += new System.EventHandler(this.Config_App_button_About_MouseHover);
             // 
             // Config_App_pictureBox_Icon
             // 
@@ -652,17 +670,19 @@ namespace Morseapp_WinForms
             this.Config_App_pictureBox_Icon.TabIndex = 14;
             this.Config_App_pictureBox_Icon.TabStop = false;
             // 
-            // Config_App_checkBox_JokeOption
+            // Config_App_checkBox_JokesOption
             // 
-            this.Config_App_checkBox_JokeOption.AutoSize = true;
-            this.Config_App_checkBox_JokeOption.Location = new System.Drawing.Point(208, 115);
-            this.Config_App_checkBox_JokeOption.Name = "Config_App_checkBox_JokeOption";
-            this.Config_App_checkBox_JokeOption.Size = new System.Drawing.Size(127, 19);
-            this.Config_App_checkBox_JokeOption.TabIndex = 14;
-            this.Config_App_checkBox_JokeOption.Text = "Allow explicit jokes";
-            this.Config_App_checkBox_JokeOption.UseVisualStyleBackColor = true;
-            this.Config_App_checkBox_JokeOption.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
-            this.Config_App_checkBox_JokeOption.MouseHover += new System.EventHandler(this.Config_App_checkBox_AllowExplicit_MouseHover);
+            this.Config_App_checkBox_JokesOption.AutoSize = true;
+            this.Config_App_checkBox_JokesOption.Checked = true;
+            this.Config_App_checkBox_JokesOption.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Config_App_checkBox_JokesOption.Location = new System.Drawing.Point(208, 115);
+            this.Config_App_checkBox_JokesOption.Name = "Config_App_checkBox_JokesOption";
+            this.Config_App_checkBox_JokesOption.Size = new System.Drawing.Size(127, 19);
+            this.Config_App_checkBox_JokesOption.TabIndex = 14;
+            this.Config_App_checkBox_JokesOption.Text = "Allow explicit jokes";
+            this.Config_App_checkBox_JokesOption.UseVisualStyleBackColor = true;
+            this.Config_App_checkBox_JokesOption.MouseLeave += new System.EventHandler(this.Common_MouseLeave);
+            this.Config_App_checkBox_JokesOption.MouseHover += new System.EventHandler(this.Config_App_checkBox_JokesOption_MouseHover);
             // 
             // Config_App_label_LangChanged
             // 
@@ -731,6 +751,7 @@ namespace Morseapp_WinForms
             // 
             // Config_groupBox_Player
             // 
+            this.Config_groupBox_Player.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_pictureBox_Icon);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_CurrentFreq);
             this.Config_groupBox_Player.Controls.Add(this.Config_Player_label_CurrentSpeed);
@@ -926,14 +947,12 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.TextBox Coder_textBox_Output;
         private System.Windows.Forms.Label Coder_label_Output;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.TabPage Configuration;
         private System.Windows.Forms.TextBox Decoder_textBox_Output;
         private System.Windows.Forms.Label Decoder_label_Output;
         private System.Windows.Forms.Label Decoder_label_Input;
         private System.Windows.Forms.TextBox Decoder_textBox_Input;
         private System.Windows.Forms.Button Decoder_button_Convert;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.Label Coder_label_Tip;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label Decoder_label_Tip;
@@ -947,7 +966,6 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.TextBox Player_textBox_Input;
         private System.Windows.Forms.RichTextBox ShowDict_richtextBox_Output;
         private System.Windows.Forms.Label Config_App_label_Lang;
-        private System.Windows.Forms.ComboBox Config_App_comboBox_Lang;
         private System.Windows.Forms.Label Config_Player_label_Speed;
         private System.Windows.Forms.CheckBox Config_App_checkBox_Dynamic;
         private System.Windows.Forms.Label Player_label_Tip;
@@ -960,7 +978,7 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.Label Config_App_label_LangChanged;
         private System.Windows.Forms.Button Coder_button_Settings;
         private System.Windows.Forms.Button Coder_button_Joke;
-        private System.Windows.Forms.CheckBox Config_App_checkBox_JokeOption;
+        private System.Windows.Forms.CheckBox Config_App_checkBox_JokesOption;
         private System.Windows.Forms.Button Coder_button_StopSound;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.PictureBox Config_App_pictureBox_Icon;
@@ -975,7 +993,9 @@ namespace Morseapp_WinForms
         private System.Windows.Forms.ComboBox Config_App_comboBox_Jokes;
         private System.Windows.Forms.Label Config_App_label_Jokes;
         private System.Windows.Forms.Button Config_App_button_Updates;
-        private System.Windows.Forms.Button Coder_button_while;
+        public System.Windows.Forms.ComboBox Config_App_comboBox_Lang;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_Updater;
     }
 }

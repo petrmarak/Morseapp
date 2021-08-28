@@ -118,37 +118,40 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="info_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\info_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="about_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\about_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="memory_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\memory_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="morse_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\morseapp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Windows_Balloon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Windows Balloon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="settings_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\settings_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="player_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\player_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="info_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\info_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="app_settings_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\app_settings_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="morse_code_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\morseapp.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settings_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="memory_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\memory_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Windows_Balloon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Windows Balloon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="info_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\player_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="app_settings_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\app_settings_40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="GitHub_Mark_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GitHub-Mark-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="morse_code_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\morseapp.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="morseapp_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\morseapp_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updater_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\updater_48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
