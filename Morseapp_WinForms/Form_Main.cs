@@ -554,6 +554,11 @@ namespace Morseapp_WinForms
             ShowDict_richtextBox_Output.Text = Morse.PrintSortedList();
         }
 
+        private void ShowDict_button_Refresh_MouseHover(object sender, EventArgs e)
+        {
+            toolStripStatusLabel.Text = GetLocStr("STATUS_Dictionary_Refresh");
+        }
+
 
 
         // *** Configuration logic: *** \\
@@ -657,11 +662,6 @@ namespace Morseapp_WinForms
         private void Config_Player_StrictTiming_MouseHover(object sender, EventArgs e)
         {
             toolStripStatusLabel.Text = GetLocStr("STATUS_Config_Player_StrictTiming");
-        }
-
-        private void ShowDict_button_Refresh_MouseHover(object sender, EventArgs e)
-        {
-            toolStripStatusLabel.Text = GetLocStr("STATUS_Dictionary_Refresh");
         }
     }
 }

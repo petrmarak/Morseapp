@@ -45,10 +45,9 @@ namespace Morseapp_WinForms
             // label_Changelog
             // 
             this.label_Changelog.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label_Changelog.AutoSize = true;
             this.label_Changelog.Location = new System.Drawing.Point(65, 35);
             this.label_Changelog.Name = "label_Changelog";
-            this.label_Changelog.Size = new System.Drawing.Size(121, 45);
+            this.label_Changelog.Size = new System.Drawing.Size(361, 122);
             this.label_Changelog.TabIndex = 0;
             this.label_Changelog.Text = "A new release.\r\nBug fixes.\r\nAnd something else...";
             // 
