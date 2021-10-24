@@ -5,11 +5,11 @@ Since I'm still new to programming, any help and tips for improving my code or s
 
 ![Morseapp main window](Morseapp.png)
 
-# Planned updates
+### Planned updates
 - Modify the Update tool to determine type of release build (.NET dependent vs Standalone) by program's file size instead of name.
 - Make textboxes multiline to better utilize vertical space.
 - When changing language, apply the new language immediately and do not require restart.
-Nice to have things that I'm not sure how to do (yet):
+#### Nice to have things that I'm not sure how to do (yet):
 - Try set MorsePlayer() to run in a new thread without breaking GUI functionality.
 - Make the main form resizable with all GUI controls correctly adapting to the current form size (textBoxes changing its vertical and horizontal length).
 
